@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+package.json
+*.log
+.DS_Store
+site/.netlify/

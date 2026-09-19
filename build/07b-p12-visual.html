@@ -1,0 +1,561 @@
+<section class="part" id="p12">
+  <div class="pnum">PARS XII</div>
+  <h2>拾贰 · 图解：地图 · 流程 · 导图 · 动态图表</h2>
+  <p class="lead">前面十一部分是文字的骨架，这一部分是它的图像版本。地图解决"这些事发生在哪里"，流程图解决"这件事怎样一步步发生"，思维导图解决"这些概念怎样挂在一起"，动态图表解决"比例到底有多悬殊"。<strong>所有地图均为示意图</strong>：相对方位与路线次序准确，海岸线与距离不按比例，用途是定位而非导航。</p>
+
+  <h3 id="p12-1">12.1 地图一：肥沃新月与四次大迁徙</h3>
+  <p>整部旧约的地理舞台就是这一弯"肥沃新月"：从埃及尼罗河谷北上迦南，再向东北经哈兰，顺两河而下至吾珥与巴比伦。四次决定性的移动都发生在这条弧线上——点击下方按钮切换图层，路线会重新描绘一次。</p>
+  <div class="viz" id="mapANE">
+    <div class="vizbar no-print" role="group" aria-label="地图图层">
+      <button class="lyr" data-l="ab" style="--lc:var(--gold)" aria-pressed="true"><i></i>亚伯拉罕的迁徙</button>
+      <button class="lyr" data-l="ex" style="--lc:var(--rust)" aria-pressed="false"><i></i>出埃及与旷野</button>
+      <button class="lyr" data-l="ca" style="--lc:var(--burg)" aria-pressed="false"><i></i>被掳往巴比伦</button>
+      <button class="lyr" data-l="re" style="--lc:var(--teal)" aria-pressed="false"><i></i>归回耶路撒冷</button>
+      <span class="hint">可同时开启多层比较</span>
+    </div>
+    <figure><svg viewBox="0 0 900 470" role="img" aria-label="古代近东肥沃新月示意地图，含亚伯拉罕迁徙、出埃及、被掳与归回四条路线">
+      <rect x="0" y="0" width="900" height="470" fill="none"/>
+      <path class="sea" d="M20 120 L300 120 L330 210 L300 300 L180 330 L20 300 Z"/>
+      <text x="150" y="215" class="lbl" text-anchor="middle" fill="var(--teal)">地　中　海</text>
+      <path class="sea" d="M250 350 L300 340 L320 420 L282 452 L250 430 Z"/>
+      <text x="284" y="400" class="cap" text-anchor="middle" fill="var(--teal)">红海</text>
+      <path class="sea" d="M790 350 L868 330 L880 400 L800 420 Z"/>
+      <text x="836" y="378" class="cap" text-anchor="middle" fill="var(--teal)">波斯湾</text>
+      <path class="land" d="M300 118 Q420 60 560 96 Q690 128 780 246 Q820 306 796 352 L742 336 Q756 268 700 210 Q612 128 500 132 Q404 136 336 206 Z"/>
+      <text x="548" y="112" class="cap" text-anchor="middle" fill="var(--gold)">肥　沃　新　月</text>
+      <path class="land2" d="M304 216 L392 238 L400 340 L344 420 L286 400 L300 300 Z"/>
+      <text x="348" y="268" class="lbl" text-anchor="middle">迦南</text>
+      <path class="land2" d="M160 330 L268 348 L282 452 L150 452 L120 386 Z"/>
+      <text x="200" y="404" class="lbl" text-anchor="middle">埃及</text>
+      <path class="land2" d="M600 236 L790 268 L800 352 L640 344 L596 300 Z" opacity=".7"/>
+      <text x="700" y="312" class="lbl" text-anchor="middle">巴比伦尼亚</text>
+      <line x1="336" y1="250" x2="336" y2="360" stroke="var(--teal)" stroke-width="2" opacity=".55"/>
+      <text x="318" y="322" class="cap" fill="var(--teal)" text-anchor="end">约旦河</text>
+      <line x1="652" y1="180" x2="742" y2="330" stroke="var(--teal)" stroke-width="2" opacity=".5"/>
+      <line x1="690" y1="166" x2="768" y2="322" stroke="var(--teal)" stroke-width="2" opacity=".5"/>
+      <text x="632" y="176" class="cap" fill="var(--teal)" text-anchor="end">底格里斯 · 幼发拉底</text>
+      <g>
+        <circle cx="742" cy="330" r="5" class="pin"/><text x="752" y="334" class="lbl-k">吾珥</text>
+        <circle cx="690" cy="286" r="5" class="pin"/><text x="700" y="290" class="lbl-k">巴比伦</text>
+        <circle cx="660" cy="178" r="5" class="pin"/><text x="670" y="182" class="lbl">尼尼微</text>
+        <circle cx="540" cy="150" r="5" class="pin"/><text x="550" y="146" class="lbl-k">哈兰</text>
+        <circle cx="414" cy="234" r="4.5" class="pin"/><text x="424" y="230" class="lbl">大马士革</text>
+        <circle cx="356" cy="298" r="5.5" class="pin"/><text x="300" y="296" class="lbl-k" text-anchor="end">耶路撒冷</text>
+        <circle cx="360" cy="262" r="4" class="pin"/><text x="306" y="262" class="lbl" text-anchor="end">示剑</text>
+        <circle cx="344" cy="352" r="4" class="pin"/><text x="356" y="366" class="lbl">别是巴</text>
+        <circle cx="214" cy="380" r="5" class="pin"/><text x="186" y="374" class="lbl-k" text-anchor="end">歌珊</text>
+        <circle cx="302" cy="418" r="4.5" class="pin"/><text x="312" y="434" class="lbl">西奈山</text>
+        <circle cx="322" cy="372" r="3.6" class="pin"/><text x="332" y="386" class="cap">加低斯</text>
+        <circle cx="790" cy="262" r="4" class="pin"/><text x="800" y="258" class="lbl">书珊</text>
+      </g>
+      <g class="layer" data-l="ab">
+        <path class="route" pathLength="1" stroke="var(--gold)" stroke-width="3.4"
+          d="M742 330 Q700 240 640 186 Q590 150 540 150 Q470 168 414 234 Q386 252 360 262 L356 298 L344 352 Q286 372 214 380"/>
+        <path class="route" pathLength="1" stroke="var(--gold)" stroke-width="2.4" stroke-dasharray="1" opacity=".75"
+          d="M214 380 Q280 364 344 352" />
+        <text x="612" y="212" class="cap" fill="var(--gold)" font-weight="700">① 吾珥 → 哈兰</text>
+        <text x="404" y="206" class="cap" fill="var(--gold)" font-weight="700">② 哈兰 → 迦南（创 12）</text>
+        <text x="226" y="352" class="cap" fill="var(--gold)" font-weight="700">③ 饥荒下埃及，后返回</text>
+      </g>
+      <g class="layer" data-l="ex">
+        <path class="route" pathLength="1" stroke="var(--rust)" stroke-width="3.4"
+          d="M214 380 Q248 412 276 424 Q296 428 302 418 Q318 396 322 372 Q332 340 344 352 Q372 336 388 314 L356 298"/>
+        <text x="236" y="446" class="cap" fill="var(--rust)" font-weight="700">过红海 → 西奈立约 → 加低斯 → 摩押 → 进迦南</text>
+      </g>
+      <g class="layer" data-l="ca">
+        <path class="route" pathLength="1" stroke="var(--burg)" stroke-width="3.4"
+          d="M356 298 Q400 246 470 200 Q560 160 630 200 Q676 240 690 286"/>
+        <text x="500" y="182" class="cap" fill="var(--burg)" font-weight="700">586 BC 被掳（沿新月北道，不穿沙漠）</text>
+      </g>
+      <g class="layer" data-l="re">
+        <path class="route" pathLength="1" stroke="var(--teal)" stroke-width="3.2" stroke-dasharray="1"
+          d="M690 286 Q660 232 596 204 Q500 172 428 210 Q384 246 356 298"/>
+        <text x="470" y="252" class="cap" fill="var(--teal)" font-weight="700">538 BC 起 · 三批归回</text>
+      </g>
+      <text x="450" y="462" class="cap" text-anchor="middle">示意图：相对方位与路线次序准确，距离与海岸线不按比例</text>
+    </svg>
+    <figcaption>三件事一看便明：<b>①</b> 亚伯拉罕并非横穿阿拉伯沙漠，而是沿新月弧线北上再南下；<b>②</b> 出埃及的路线避开了近便的"非利士地的道路"（出 13:17），绕向西奈——立约比抄近路更重要；<b>③</b> 被掳与归回走的是同一条路，方向相反。这条路正是整部旧约的主动脉。</figcaption></figure>
+  </div>
+
+  <h3 id="p12-2">12.2 地图二：十二支派与南北分裂</h3>
+  <div class="viz" id="mapCanaan">
+    <div class="vizbar no-print" role="group" aria-label="迦南地图层">
+      <button class="lyr" data-l="tribes" style="--lc:var(--olive)" aria-pressed="true"><i></i>十二支派分地</button>
+      <button class="lyr" data-l="split" style="--lc:var(--burg)" aria-pressed="false"><i></i>931 BC 王国分裂</button>
+    </div>
+    <figure><svg viewBox="0 0 620 540" role="img" aria-label="迦南地十二支派分布与南北国分裂示意图">
+      <path class="sea" d="M0 40 L112 40 L128 300 L96 520 L0 520 Z"/>
+      <text x="56" y="290" class="lbl" text-anchor="middle" fill="var(--teal)" transform="rotate(-90 56 290)">地中海</text>
+      <path class="land" d="M112 40 L470 40 L500 180 L470 340 L430 470 L330 516 L200 500 L128 300 Z"/>
+      <ellipse cx="322" cy="96" rx="34" ry="20" class="sea"/><text x="322" y="100" class="cap" text-anchor="middle" fill="var(--teal)">加利利海</text>
+      <rect x="296" y="330" width="52" height="118" rx="16" class="sea"/><text x="322" y="394" class="cap" text-anchor="middle" fill="var(--teal)">盐海</text>
+      <line x1="322" y1="116" x2="322" y2="330" stroke="var(--teal)" stroke-width="3" opacity=".6"/>
+      <text x="336" y="230" class="cap" fill="var(--teal)">约旦河</text>
+      <g class="layer" data-l="tribes">
+        <g class="lbl" text-anchor="middle">
+          <text x="240" y="70" class="lbl-k">但</text>
+          <text x="240" y="106">亚设</text><text x="392" y="90">拿弗他利</text>
+          <text x="248" y="150">西布伦</text><text x="330" y="150">以萨迦</text>
+          <text x="420" y="150">玛拿西（东）</text>
+          <text x="216" y="206">玛拿西（西）</text><text x="430" y="228">迦得</text>
+          <text x="224" y="262">以法莲</text>
+          <text x="196" y="308" class="lbl-k">便雅悯</text><text x="430" y="312">流便</text>
+          <text x="212" y="352">但（迁前）</text>
+          <text x="216" y="406" class="lbl-k">犹大</text>
+          <text x="264" y="462">西缅</text>
+        </g>
+        <path d="M128 250 L500 250" stroke="var(--rule-2)" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="510" y="246" class="cap" text-anchor="end" fill="var(--ink-3)">利未支派无地业，散居四十八座城（书 21）</text>
+      </g>
+      <g class="layer" data-l="split">
+        <path class="route" pathLength="1" stroke="var(--burg)" stroke-width="3.6"
+          d="M132 292 Q200 280 262 300 Q320 322 400 300 Q450 288 486 272"/>
+        <rect x="140" y="60" width="330" height="222" rx="14" fill="var(--navy)" opacity=".10"/>
+        <rect x="150" y="300" width="286" height="196" rx="14" fill="var(--burg)" opacity=".12"/>
+        <text x="300" y="170" class="lbl-k" text-anchor="middle" fill="var(--navy)" font-size="15">北国 · 以色列</text>
+        <text x="300" y="192" class="cap" text-anchor="middle">十支派 · 都撒玛利亚 · 十九王全无一善</text>
+        <text x="300" y="212" class="cap" text-anchor="middle">722 BC 亡于亚述</text>
+        <text x="292" y="392" class="lbl-k" text-anchor="middle" fill="var(--burg)" font-size="15">南国 · 犹大</text>
+        <text x="292" y="414" class="cap" text-anchor="middle">犹大＋便雅悯 · 都耶路撒冷 · 大卫王朝延续</text>
+        <text x="292" y="434" class="cap" text-anchor="middle">586 BC 亡于巴比伦</text>
+        <circle cx="292" cy="336" r="5" class="pin"/><text x="302" y="340" class="lbl-k">耶路撒冷</text>
+        <circle cx="262" cy="212" r="4.5" class="pin"/><text x="272" y="208" class="lbl">撒玛利亚</text>
+        <circle cx="286" cy="360" r="3.6" class="pin"/><text x="296" y="372" class="cap">伯利恒</text>
+      </g>
+      <text x="310" y="532" class="cap" text-anchor="middle">示意图：支派边界为概略示意，不同经文与年代的划分互有出入</text>
+    </svg>
+    <figcaption>两层叠看能解释一个常被忽略的事实：<b>南国只剩两个支派，却保住了圣殿、王朝与正典</b>。神的应许不随人多寡而增减——这正是"余民"神学的地理注脚。</figcaption></figure>
+  </div>
+
+  <h3 id="p12-3">12.3 地图三：保罗的四段航程</h3>
+  <div class="viz" id="mapPaul">
+    <div class="vizbar no-print" role="group" aria-label="保罗旅程图层">
+      <button class="lyr" data-l="j1" style="--lc:var(--olive)" aria-pressed="true"><i></i>第一次 约 46–48</button>
+      <button class="lyr" data-l="j2" style="--lc:var(--teal)" aria-pressed="false"><i></i>第二次 约 49–52</button>
+      <button class="lyr" data-l="j3" style="--lc:var(--violet)" aria-pressed="false"><i></i>第三次 约 53–57</button>
+      <button class="lyr" data-l="j4" style="--lc:var(--burg)" aria-pressed="false"><i></i>押解赴罗马 约 59–60</button>
+    </div>
+    <figure><svg viewBox="0 0 900 420" role="img" aria-label="保罗三次宣教旅程与赴罗马航程示意图">
+      <rect x="0" y="0" width="900" height="420" fill="none"/>
+      <path class="sea" d="M40 200 L880 180 L880 372 L40 372 Z"/>
+      <text x="300" y="352" class="lbl" text-anchor="middle" fill="var(--teal)">地　中　海</text>
+      <path class="land" d="M40 60 L330 40 L420 96 L470 78 L560 108 L640 86 L880 104 L880 182 L640 200 L470 214 L330 196 L40 176 Z"/>
+      <text x="200" y="110" class="lbl" text-anchor="middle">欧洲　马其顿 · 亚该亚 · 意大利</text>
+      <text x="740" y="146" class="lbl" text-anchor="middle">亚细亚 · 叙利亚</text>
+      <path class="land2" d="M300 244 L378 236 L392 286 L316 300 Z"/><text x="346" y="272" class="cap" text-anchor="middle">革哩底</text>
+      <path class="land2" d="M636 268 L688 258 L700 300 L644 310 Z"/><text x="668" y="288" class="cap" text-anchor="middle">居比路</text>
+      <path class="land2" d="M156 276 L196 270 L204 298 L162 304 Z"/><text x="180" y="292" class="cap" text-anchor="middle">米利大</text>
+      <g>
+        <circle cx="760" cy="188" r="5.4" class="pin"/><text x="770" y="192" class="lbl-k">耶路撒冷</text>
+        <circle cx="712" cy="150" r="5.4" class="pin"/><text x="722" y="146" class="lbl-k">安提阿</text>
+        <circle cx="664" cy="144" r="4" class="pin"/><text x="652" y="136" class="cap" text-anchor="end">大数</text>
+        <circle cx="586" cy="130" r="4.4" class="pin"/><text x="596" y="124" class="lbl">加拉太诸城</text>
+        <circle cx="486" cy="160" r="5.4" class="pin"/><text x="496" y="176" class="lbl-k">以弗所</text>
+        <circle cx="452" cy="116" r="4.2" class="pin"/><text x="462" y="110" class="lbl">特罗亚</text>
+        <circle cx="392" cy="70" r="4.6" class="pin"/><text x="402" y="66" class="lbl-k">腓立比</text>
+        <circle cx="352" cy="92" r="4.2" class="pin"/><text x="316" y="88" class="lbl" text-anchor="end">帖撒罗尼迦</text>
+        <circle cx="334" cy="112" r="3.6" class="pin"/><text x="300" y="116" class="cap" text-anchor="end">庇哩亚</text>
+        <circle cx="356" cy="164" r="4.4" class="pin"/><text x="366" y="160" class="lbl">雅典</text>
+        <circle cx="326" cy="182" r="5" class="pin"/><text x="290" y="186" class="lbl-k" text-anchor="end">哥林多</text>
+        <circle cx="168" cy="128" r="5.6" class="pin"/><text x="178" y="124" class="lbl-k">罗马</text>
+        <circle cx="62" cy="140" r="3.8" class="pin" stroke-dasharray="3 3"/><text x="72" y="154" class="cap">西班牙（罗 15:24 之愿）</text>
+      </g>
+      <g class="layer" data-l="j1">
+        <path class="route" pathLength="1" stroke="var(--olive)" stroke-width="3.2"
+          d="M712 150 Q690 200 668 276 Q640 292 612 250 Q596 190 586 130 Q640 122 712 150"/>
+        <text x="600" y="104" class="cap" fill="var(--olive)" font-weight="700">安提阿 → 居比路 → 加拉太（路司得、特庇）→ 返安提阿</text>
+      </g>
+      <g class="layer" data-l="j2">
+        <path class="route" pathLength="1" stroke="var(--teal)" stroke-width="3.2"
+          d="M712 150 Q640 128 586 130 Q520 120 452 116 Q420 88 392 70 Q370 82 352 92 L334 112 Q344 140 356 164 L326 182 Q400 178 486 160 Q600 164 712 150"/>
+        <text x="380" y="46" class="cap" fill="var(--teal)" font-weight="700">首次进入欧洲：特罗亚异象 → 腓立比 → 帖撒罗尼迦 → 雅典 → 哥林多（住一年半）</text>
+      </g>
+      <g class="layer" data-l="j3">
+        <path class="route" pathLength="1" stroke="var(--violet)" stroke-width="3.2"
+          d="M712 150 Q640 134 586 130 Q536 140 486 160 Q466 132 452 116 Q420 86 392 70 Q358 116 326 182 Q400 186 486 160 Q560 176 660 180 L760 188"/>
+        <text x="500" y="206" class="cap" fill="var(--violet)" font-weight="700">以弗所三年为重心 → 马其顿与亚该亚 → 携捐项上耶路撒冷</text>
+      </g>
+      <g class="layer" data-l="j4">
+        <path class="route" pathLength="1" stroke="var(--burg)" stroke-width="3.4"
+          d="M760 188 Q700 214 620 236 Q520 258 392 286 Q300 300 204 298 Q186 220 168 128"/>
+        <text x="430" y="316" class="cap" fill="var(--burg)" font-weight="700">该撒利亚 → 革哩底外海遇风 → 米利大船破 → 罗马（徒 27–28）</text>
+      </g>
+      <text x="450" y="410" class="cap" text-anchor="middle">示意图：地形高度简化，站点相对次序与航向准确</text>
+    </svg>
+    <figcaption>四条线叠看，两个规律很清楚：<b>①</b> 保罗始终沿罗马驿道与犹太侨民社群推进，先进会堂后转外邦；<b>②</b> 每一次都回到安提阿或耶路撒冷述职——宣教不是个人游走，而是<b>受差遣、有交代</b>的教会行动。</figcaption></figure>
+  </div>
+
+  <h3 id="p12-4">12.4 地图四：启示录七教会的书信环线</h3>
+  <figure><svg viewBox="0 0 640 400" role="img" aria-label="小亚细亚启示录七教会位置与送信环线示意图">
+    <path class="sea" d="M0 250 L180 236 L200 330 L0 360 Z"/>
+    <text x="86" y="300" class="lbl" text-anchor="middle" fill="var(--teal)">爱琴海</text>
+    <path class="land" d="M180 60 L560 48 L600 200 L540 330 L300 348 L200 330 L180 236 Z"/>
+    <text x="470" y="110" class="lbl" text-anchor="middle">亚细亚省</text>
+    <path class="route" pathLength="1" stroke="var(--gold)" stroke-width="3" style="stroke-dashoffset:0"
+      d="M252 296 Q228 264 236 234 Q244 188 266 168 Q316 176 344 198 Q374 224 380 252 Q414 282 462 320"/>
+    <g>
+      <circle cx="252" cy="296" r="6" class="pin"/><text x="238" y="316" class="lbl-k" text-anchor="end">以弗所</text>
+      <text x="238" y="332" class="cap" text-anchor="end">离弃起初的爱心</text>
+      <circle cx="236" cy="234" r="6" class="pin"/><text x="222" y="230" class="lbl-k" text-anchor="end">士每拿</text>
+      <text x="222" y="246" class="cap" text-anchor="end">受苦却富足 · 无责备</text>
+      <circle cx="266" cy="168" r="6" class="pin"/><text x="256" y="152" class="lbl-k" text-anchor="end">别迦摩</text>
+      <text x="256" y="168" class="cap" text-anchor="end">撒但座位之处</text>
+      <circle cx="344" cy="198" r="6" class="pin"/><text x="356" y="186" class="lbl-k">推雅推喇</text>
+      <text x="356" y="202" class="cap">容让耶洗别</text>
+      <circle cx="380" cy="252" r="6" class="pin"/><text x="392" y="244" class="lbl-k">撒狄</text>
+      <text x="392" y="260" class="cap">按名是活的，其实是死的</text>
+      <circle cx="424" cy="288" r="6" class="pin"/><text x="436" y="282" class="lbl-k">非拉铁非</text>
+      <text x="436" y="298" class="cap">敞开的门 · 无责备</text>
+      <circle cx="462" cy="320" r="6" class="pin"/><text x="474" y="316" class="lbl-k">老底嘉</text>
+      <text x="474" y="332" class="cap">不冷不热 · 无称赞</text>
+      <circle cx="120" cy="312" r="5" class="pin"/><text x="120" y="336" class="lbl" text-anchor="middle">拔摩岛</text>
+      <text x="120" y="350" class="cap" text-anchor="middle">约翰在此得启示</text>
+    </g>
+    <text x="320" y="384" class="cap" text-anchor="middle">七封书信的次序正是当时送信人沿罗马大道的环行路线：这是七间真实的教会，不是七个时代</text>
+  </svg>
+  <figcaption>记住这条环线，就不会把启 2–3 读成"教会历史的七个时期"。<b>唯二没有受责备的是士每拿与非拉铁非</b>——两间最贫穷、最软弱的教会；<b>唯一没有受称赞的是老底嘉</b>——最富足的那一间。</figcaption></figure>
+
+  <h3 id="p12-5">12.5 流程图：四条可以照着走的路</h3>
+  <div class="g2">
+    <figure><svg viewBox="0 0 420 470" role="img" aria-label="解经流程图：从经文到应用的四步决策">
+      <text x="210" y="24" font-size="13.5" font-weight="700" fill="var(--navy)" text-anchor="middle">解经流程：从经文到应用</text>
+      <rect x="100" y="38" width="220" height="38" rx="19" class="flowbox" style="--fc:var(--gold)"/>
+      <text x="210" y="62" class="flowtxt" text-anchor="middle" font-weight="700">一段经文摆在面前</text>
+      <line x1="210" y1="76" x2="210" y2="96" stroke="var(--rule-2)" stroke-width="2"/>
+      <rect x="60" y="96" width="300" height="46" rx="8" class="flowbox"/>
+      <text x="210" y="116" class="flowtxt" text-anchor="middle" font-weight="700">① 文法：它在说什么</text>
+      <text x="210" y="132" class="flowtxt" text-anchor="middle">词汇 · 句法 · 文体（叙事？律法？诗？书信？）</text>
+      <line x1="210" y1="142" x2="210" y2="160" stroke="var(--rule-2)" stroke-width="2"/>
+      <rect x="60" y="160" width="300" height="46" rx="8" class="flowbox"/>
+      <text x="210" y="180" class="flowtxt" text-anchor="middle" font-weight="700">② 历史：对谁说、为何说</text>
+      <text x="210" y="196" class="flowtxt" text-anchor="middle">作者 · 首批读者 · 具体处境与问题</text>
+      <line x1="210" y1="206" x2="210" y2="224" stroke="var(--rule-2)" stroke-width="2"/>
+      <rect x="60" y="224" width="300" height="46" rx="8" class="flowbox" style="--fc:var(--burg)"/>
+      <text x="210" y="244" class="flowtxt" text-anchor="middle" font-weight="700">③ 位置：在救赎历史的哪一段</text>
+      <text x="210" y="260" class="flowtxt" text-anchor="middle">哪一幕？哪一期圣约？推进了哪条主线？</text>
+      <line x1="210" y1="270" x2="210" y2="288" stroke="var(--rule-2)" stroke-width="2"/>
+      <path d="M210 288 L330 326 L210 364 L90 326 Z" class="flowbox" style="--fc:var(--navy)"/>
+      <text x="210" y="322" class="flowtxt" text-anchor="middle" font-weight="700">这解释与圣经他处冲突吗？</text>
+      <text x="210" y="338" class="flowtxt" text-anchor="middle">（信心的类比）</text>
+      <line x1="330" y1="326" x2="378" y2="326" stroke="var(--burg)" stroke-width="2"/>
+      <text x="354" y="318" class="cap" text-anchor="middle" fill="var(--burg)">冲突</text>
+      <path d="M378 326 L392 326 L392 150 L360 150" stroke="var(--burg)" stroke-width="2" fill="none"/>
+      <text x="386" y="238" class="cap" fill="var(--burg)" text-anchor="middle" transform="rotate(90 386 238)">退回第①步重来</text>
+      <line x1="210" y1="364" x2="210" y2="384" stroke="var(--rule-2)" stroke-width="2"/>
+      <text x="222" y="378" class="cap" fill="var(--green)">一致</text>
+      <rect x="60" y="384" width="300" height="42" rx="8" class="flowbox" style="--fc:var(--green)"/>
+      <text x="210" y="402" class="flowtxt" text-anchor="middle" font-weight="700">④ 经基督到达听众</text>
+      <text x="210" y="418" class="flowtxt" text-anchor="middle">先讲神做了什么，再讲我们当怎样行</text>
+      <text x="210" y="448" class="cap" text-anchor="middle">绕过第④步直接应用 ＝ 道德说教；停在第③步 ＝ 只有历史</text>
+    </svg>
+    <figcaption>第③步是最常被跳过的一步，也是改革宗与一般福音派讲道最明显的分别所在。</figcaption></figure>
+
+    <figure><svg viewBox="0 0 420 470" role="img" aria-label="士师记的螺旋下坠循环流程图">
+      <text x="210" y="24" font-size="13.5" font-weight="700" fill="var(--burg)" text-anchor="middle">士师记的螺旋：五步循环，每轮更低</text>
+      <g fill="none" stroke-width="2.4" stroke-linecap="round">
+        <path d="M210 56 A118 118 0 1 1 208 56" stroke="var(--rule-2)"/>
+        <path d="M210 92 A84 84 0 1 1 208 92" stroke="var(--rule-2)" opacity=".75"/>
+        <path d="M210 128 A50 50 0 1 1 208 128" stroke="var(--rule-2)" opacity=".5"/>
+      </g>
+      <g class="flowtxt" text-anchor="middle">
+        <circle cx="210" cy="56" r="21" class="flowbox" style="--fc:var(--burg)"/><text x="210" y="60" font-weight="700">行恶</text>
+        <circle cx="322" cy="150" r="21" class="flowbox" style="--fc:var(--rust)"/><text x="322" y="154" font-weight="700">受欺压</text>
+        <circle cx="280" cy="284" r="21" class="flowbox" style="--fc:var(--gold)"/><text x="280" y="288" font-weight="700">哀求</text>
+        <circle cx="140" cy="284" r="21" class="flowbox" style="--fc:var(--green)"/><text x="140" y="288" font-weight="700">兴起士师</text>
+        <circle cx="98" cy="150" r="21" class="flowbox" style="--fc:var(--teal)"/><text x="98" y="154" font-weight="700">得安息</text>
+      </g>
+      <g class="cap" text-anchor="middle" fill="var(--ink-3)">
+        <text x="368" y="112">「以色列人行耶和华</text><text x="368" y="126">眼中看为恶的事」</text>
+        <text x="330" y="330">神听见哀声</text>
+        <text x="86" y="330">拯救者本身也不完全</text>
+        <text x="52" y="112">「国中太平四十年」</text>
+      </g>
+      <line x1="210" y1="176" x2="210" y2="214" stroke="var(--burg)" stroke-width="2.6" marker-end="url(#fa1)"/>
+      <defs><marker id="fa1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--burg)"/></marker></defs>
+      <text x="210" y="234" class="flowtxt" text-anchor="middle" font-weight="700" fill="var(--burg)">每一轮的起点都比上一轮更低</text>
+      <rect x="44" y="388" width="332" height="62" rx="9" class="flowbox" style="--fc:var(--navy)"/>
+      <text x="210" y="410" class="flowtxt" text-anchor="middle" font-weight="700">螺旋的尽头（士 17–21）</text>
+      <text x="210" y="428" class="flowtxt" text-anchor="middle">宗教与道德全面崩坏：「那时以色列中没有王，</text>
+      <text x="210" y="444" class="flowtxt" text-anchor="middle">各人任意而行」——全书在呼求一位真王</text>
+    </svg>
+    <figcaption>循环不是圆，是<b>下坠的螺旋</b>。看懂这张图，就懂了为什么士师记之后紧接着的是撒母耳记与王国的兴起。</figcaption></figure>
+
+    <figure><svg viewBox="0 0 420 380" role="img" aria-label="赎罪日流程图">
+      <text x="210" y="24" font-size="13.5" font-weight="700" fill="var(--navy)" text-anchor="middle">赎罪日：一日之内的两只山羊（利 16）</text>
+      <rect x="86" y="38" width="248" height="34" rx="8" class="flowbox" style="--fc:var(--gold)"/>
+      <text x="210" y="59" class="flowtxt" text-anchor="middle" font-weight="700">大祭司先为自己与本家献公牛</text>
+      <line x1="210" y1="72" x2="210" y2="92" stroke="var(--rule-2)" stroke-width="2"/>
+      <rect x="86" y="92" width="248" height="34" rx="8" class="flowbox"/>
+      <text x="210" y="113" class="flowtxt" text-anchor="middle" font-weight="700">为两只公山羊拈阄</text>
+      <line x1="150" y1="126" x2="112" y2="152" stroke="var(--rule-2)" stroke-width="2"/>
+      <line x1="270" y1="126" x2="308" y2="152" stroke="var(--rule-2)" stroke-width="2"/>
+      <rect x="20" y="152" width="176" height="76" rx="8" class="flowbox" style="--fc:var(--burg)"/>
+      <text x="108" y="172" class="flowtxt" text-anchor="middle" font-weight="700">归耶和华的那只</text>
+      <text x="108" y="190" class="flowtxt" text-anchor="middle">被宰杀，血带入至圣所</text>
+      <text x="108" y="206" class="flowtxt" text-anchor="middle">弹在施恩座上</text>
+      <text x="108" y="222" class="cap" text-anchor="middle" fill="var(--burg)">代赎：刑罚被承担</text>
+      <rect x="224" y="152" width="176" height="76" rx="8" class="flowbox" style="--fc:var(--teal)"/>
+      <text x="312" y="172" class="flowtxt" text-anchor="middle" font-weight="700">归阿撒泻勒的那只</text>
+      <text x="312" y="190" class="flowtxt" text-anchor="middle">按手认罪，罪归其头</text>
+      <text x="312" y="206" class="flowtxt" text-anchor="middle">被牵到无人之地</text>
+      <text x="312" y="222" class="cap" text-anchor="middle" fill="var(--teal)">除罪：罪被带走</text>
+      <line x1="108" y1="228" x2="108" y2="256" stroke="var(--rule-2)" stroke-width="2"/>
+      <line x1="312" y1="228" x2="312" y2="256" stroke="var(--rule-2)" stroke-width="2"/>
+      <rect x="40" y="256" width="340" height="44" rx="9" class="flowbox" style="--fc:var(--navy)"/>
+      <text x="210" y="276" class="flowtxt" text-anchor="middle" font-weight="700">两只合起来才说尽一件事</text>
+      <text x="210" y="292" class="flowtxt" text-anchor="middle">刑罚被承担　＋　罪被带离　＝ 完整的赎罪</text>
+      <line x1="210" y1="300" x2="210" y2="318" stroke="var(--gold)" stroke-width="2.4"/>
+      <rect x="40" y="318" width="340" height="44" rx="9" class="flowbox" style="--fc:var(--gold)"/>
+      <text x="210" y="338" class="flowtxt" text-anchor="middle" font-weight="700">基督一人兼任三重角色</text>
+      <text x="210" y="354" class="flowtxt" text-anchor="middle">大祭司 · 被杀的羊 · 担罪出到营外的那一位（来 13:11–12）</text>
+    </svg>
+    <figcaption>每年一次、年年重复，本身就是"这还不够"的宣告（来 10:1–4）。这张流程图最好与希伯来书 9–10 章对读。</figcaption></figure>
+
+    <figure><svg viewBox="0 0 420 380" role="img" aria-label="教会纪律四步流程图">
+      <text x="210" y="24" font-size="13.5" font-weight="700" fill="var(--navy)" text-anchor="middle">教会纪律的四步（太 18:15–17）</text>
+      <rect x="40" y="38" width="340" height="44" rx="9" class="flowbox" style="--fc:var(--green)"/>
+      <text x="210" y="58" class="flowtxt" text-anchor="middle" font-weight="700">① 私下去指出他的错</text>
+      <text x="210" y="74" class="flowtxt" text-anchor="middle">只有你和他在一处 · 目的自始至终是「得着你的弟兄」</text>
+      <line x1="210" y1="82" x2="210" y2="100" stroke="var(--rule-2)" stroke-width="2"/>
+      <text x="252" y="96" class="cap" fill="var(--ink-3)">若不听</text>
+      <rect x="40" y="100" width="340" height="44" rx="9" class="flowbox" style="--fc:var(--gold)"/>
+      <text x="210" y="120" class="flowtxt" text-anchor="middle" font-weight="700">② 另带一两个人同去</text>
+      <text x="210" y="136" class="flowtxt" text-anchor="middle">为要句句都定准（申 19:15）· 既保护受害者，也保护被控者</text>
+      <line x1="210" y1="144" x2="210" y2="162" stroke="var(--rule-2)" stroke-width="2"/>
+      <text x="252" y="158" class="cap" fill="var(--ink-3)">若不听</text>
+      <rect x="40" y="162" width="340" height="44" rx="9" class="flowbox" style="--fc:var(--rust)"/>
+      <text x="210" y="182" class="flowtxt" text-anchor="middle" font-weight="700">③ 告诉教会</text>
+      <text x="210" y="198" class="flowtxt" text-anchor="middle">由堂会依职分处理，不是会众围观或网络公审</text>
+      <line x1="210" y1="206" x2="210" y2="224" stroke="var(--rule-2)" stroke-width="2"/>
+      <text x="252" y="220" class="cap" fill="var(--ink-3)">若不听</text>
+      <rect x="40" y="224" width="340" height="44" rx="9" class="flowbox" style="--fc:var(--burg)"/>
+      <text x="210" y="244" class="flowtxt" text-anchor="middle" font-weight="700">④ 看他像外邦人和税吏</text>
+      <text x="210" y="260" class="flowtxt" text-anchor="middle">停止圣餐与会籍——注意主怎样对待外邦人和税吏：仍然寻找</text>
+      <path d="M40 246 L20 246 L20 60 L40 60" stroke="var(--green)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>
+      <text x="14" y="156" class="cap" fill="var(--green)" text-anchor="middle" transform="rotate(-90 14 156)">任一步悔改即停止，立刻复和</text>
+      <rect x="40" y="290" width="340" height="72" rx="9" class="flowbox" style="--fc:var(--navy)"/>
+      <text x="210" y="310" class="flowtxt" text-anchor="middle" font-weight="700">比利时信条第 29 条：纪律是真教会的第三个记号</text>
+      <text x="210" y="328" class="flowtxt" text-anchor="middle">海德堡第 85 问：这是「天国的钥匙」之一</text>
+      <text x="210" y="346" class="flowtxt" text-anchor="middle">目的是挽回与保护，不是报复；每一步都为悔改留门</text>
+    </svg>
+    <figcaption>四步之所以重要，在于它<b>限制了权力</b>：不可跳步、不可越级、不可公开羞辱，且每一步都为悔改留门。</figcaption></figure>
+  </div>
+
+  <h3 id="p12-6">12.6 思维导图：全书结构一览</h3>
+  <div class="mindmap"><figure><svg viewBox="0 0 900 560" role="img" aria-label="整本圣经解读的放射状思维导图">
+    <text x="450" y="26" font-size="15" font-weight="700" fill="var(--navy)" text-anchor="middle">思维导图：整本圣经怎样挂成一棵树</text>
+    <ellipse cx="450" cy="280" rx="86" ry="46" fill="var(--card-2)" stroke="var(--gold)" stroke-width="2.6"/>
+    <text x="450" y="274" font-size="15" font-weight="700" fill="var(--gold)" text-anchor="middle">整本圣经</text>
+    <text x="450" y="296" font-size="10.4" fill="var(--ink-2)" text-anchor="middle">一位作者 · 一条主线 · 一位主角</text>
+    <g fill="none" stroke-width="2.2">
+      <path d="M382 254 Q280 200 190 150" stroke="var(--gold)"/>
+      <path d="M368 280 Q250 280 150 280" stroke="var(--burg)"/>
+      <path d="M382 306 Q280 360 190 410" stroke="var(--navy)"/>
+      <path d="M518 254 Q620 200 710 150" stroke="var(--teal)"/>
+      <path d="M532 280 Q650 280 750 280" stroke="var(--violet)"/>
+      <path d="M518 306 Q620 360 710 410" stroke="var(--green)"/>
+    </g>
+    <g>
+      <rect x="30" y="112" width="180" height="76" rx="10" fill="var(--card)" stroke="var(--gold)" stroke-width="1.8"/>
+      <text x="120" y="132" font-size="12.4" font-weight="700" fill="var(--gold)" text-anchor="middle">时间线</text>
+      <text x="120" y="150" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">创造 · 族长 · 出埃及 · 王国</text>
+      <text x="120" y="166" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">被掳 · 归回 · 两约之间</text>
+      <text x="120" y="182" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">基督 · 使徒 · 教会 · 再来</text>
+      <rect x="10" y="242" width="180" height="76" rx="10" fill="var(--card)" stroke="var(--burg)" stroke-width="1.8"/>
+      <text x="100" y="262" font-size="12.4" font-weight="700" fill="var(--burg)" text-anchor="middle">故事线</text>
+      <text x="100" y="280" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">六幕：创 · 堕 · 应 · 成 · 施 · 终</text>
+      <text x="100" y="296" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">三线：后裔 · 同在 · 国度</text>
+      <text x="100" y="312" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">三次张力高峰 → 三次翻转</text>
+      <rect x="30" y="372" width="180" height="76" rx="10" fill="var(--card)" stroke="var(--navy)" stroke-width="1.8"/>
+      <text x="120" y="392" font-size="12.4" font-weight="700" fill="var(--navy)" text-anchor="middle">圣经神学</text>
+      <text x="120" y="410" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">渐进 · 有机 · 归于基督</text>
+      <text x="120" y="426" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">historia ／ ordo salutis</text>
+      <text x="120" y="442" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">预表四准则 · 已然未然</text>
+      <rect x="690" y="112" width="190" height="76" rx="10" fill="var(--card)" stroke="var(--teal)" stroke-width="1.8"/>
+      <text x="785" y="132" font-size="12.4" font-weight="700" fill="var(--teal)" text-anchor="middle">圣约神学</text>
+      <text x="785" y="150" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">救赎之约 · 行为之约 · 恩典之约</text>
+      <text x="785" y="166" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">六期施行 · 五要素 · 五记号</text>
+      <text x="785" y="182" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">施行 ≠ 实质；圣约 ≠ 拣选</text>
+      <rect x="710" y="242" width="180" height="76" rx="10" fill="var(--card)" stroke="var(--violet)" stroke-width="1.8"/>
+      <text x="800" y="262" font-size="12.4" font-weight="700" fill="var(--violet)" text-anchor="middle">教义纵贯</text>
+      <text x="800" y="280" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">神论 · 人论 · 基督论</text>
+      <text x="800" y="296" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">救恩论 · 教会论 · 末世论</text>
+      <text x="800" y="312" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">ordo salutis 九环</text>
+      <rect x="690" y="372" width="190" height="76" rx="10" fill="var(--card)" stroke="var(--green)" stroke-width="1.8"/>
+      <text x="785" y="392" font-size="12.4" font-weight="700" fill="var(--green)" text-anchor="middle">认信坐标</text>
+      <text x="785" y="410" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">外层：使徒 · 尼西亚 · 亚他那修</text>
+      <text x="785" y="426" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">内层：比利时 · 海德堡 · 多特</text>
+      <text x="785" y="442" font-size="10.2" fill="var(--ink-2)" text-anchor="middle">norma normans ／ normata</text>
+    </g>
+    <g fill="none" stroke="var(--rule-2)" stroke-width="1.4" stroke-dasharray="4 4">
+      <path d="M450 326 L450 470"/><path d="M250 470 L650 470"/>
+    </g>
+    <rect x="250" y="470" width="400" height="66" rx="10" fill="var(--card-2)" stroke="var(--gold)" stroke-width="1.8"/>
+    <text x="450" y="492" font-size="12.4" font-weight="700" fill="var(--gold)" text-anchor="middle">落点：六十六卷逐卷 → 应用 → 记忆</text>
+    <text x="450" y="510" font-size="10.4" fill="var(--ink-2)" text-anchor="middle">每一卷都可用四个坐标定位：哪一幕 · 哪一期圣约 · 推进哪条主线 · 指向基督的哪一面</text>
+    <text x="450" y="528" font-size="10.4" fill="var(--ink-2)" text-anchor="middle">十个骨架口诀 ＋ 六十张闪卡 ＋ 十二道自测 ＝ 可带走的框架</text>
+  </svg>
+  <figcaption>这张图是整页的一页纸摘要。若只能记住一张图，记这张。</figcaption></figure></div>
+
+  <h3 id="p12-7">12.7 结构图示：会幕与信仰之盾</h3>
+  <div class="g2">
+    <figure><svg viewBox="0 0 460 380" role="img" aria-label="会幕平面图与器具的基督论对应">
+      <text x="230" y="24" font-size="13.5" font-weight="700" fill="var(--navy)" text-anchor="middle">会幕平面图：从门口走到至圣所</text>
+      <rect x="30" y="40" width="400" height="230" rx="6" fill="none" stroke="var(--gold)" stroke-width="2.6"/>
+      <text x="230" y="288" class="cap" text-anchor="middle">外院（挂细麻幔子）· 唯一的入口在东面</text>
+      <rect x="22" y="130" width="14" height="50" fill="var(--gold)" opacity=".7"/>
+      <text x="16" y="158" class="cap" text-anchor="end" fill="var(--gold)">门</text>
+      <rect x="64" y="128" width="52" height="54" rx="4" class="flowbox" style="--fc:var(--burg)"/>
+      <text x="90" y="150" class="cap" text-anchor="middle" font-weight="700">燔祭坛</text>
+      <text x="90" y="166" class="cap" text-anchor="middle">流血</text>
+      <circle cx="152" cy="155" r="20" class="flowbox" style="--fc:var(--teal)"/>
+      <text x="152" y="152" class="cap" text-anchor="middle" font-weight="700">洗濯盆</text>
+      <text x="152" y="166" class="cap" text-anchor="middle">洁净</text>
+      <rect x="196" y="76" width="200" height="158" rx="5" fill="var(--card-2)" stroke="var(--navy)" stroke-width="2.2"/>
+      <text x="296" y="66" class="cap" text-anchor="middle" fill="var(--navy)">帐幕本体</text>
+      <line x1="336" y1="76" x2="336" y2="234" stroke="var(--burg)" stroke-width="3.4"/>
+      <text x="326" y="250" class="cap" text-anchor="end" fill="var(--burg)">幔子</text>
+      <rect x="208" y="92" width="44" height="34" rx="4" class="flowbox" style="--fc:var(--gold)"/>
+      <text x="230" y="106" class="cap" text-anchor="middle">陈设饼</text><text x="230" y="118" class="cap" text-anchor="middle">桌</text>
+      <rect x="208" y="186" width="44" height="34" rx="4" class="flowbox" style="--fc:var(--gold)"/>
+      <text x="230" y="200" class="cap" text-anchor="middle">金灯台</text>
+      <rect x="276" y="140" width="44" height="32" rx="4" class="flowbox" style="--fc:var(--violet)"/>
+      <text x="298" y="154" class="cap" text-anchor="middle">香坛</text><text x="298" y="166" class="cap" text-anchor="middle">祷告</text>
+      <rect x="348" y="130" width="40" height="52" rx="4" class="flowbox" style="--fc:var(--burg)"/>
+      <text x="368" y="150" class="cap" text-anchor="middle" font-weight="700">约柜</text>
+      <text x="368" y="164" class="cap" text-anchor="middle">施恩座</text>
+      <text x="368" y="252" class="cap" text-anchor="middle" fill="var(--burg)">至圣所</text>
+      <path d="M36 155 L64 155 M116 155 L132 155 M172 155 L196 155 M252 130 L276 150 M320 156 L348 156"
+            stroke="var(--gold)" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="230" y="320" class="cap" text-anchor="middle">次序不可颠倒：先流血，后洁净，才得供应、光照与代求，最后才是同在</text>
+      <text x="230" y="342" class="cap" text-anchor="middle" fill="var(--burg)" font-weight="700">主断气时幔子从上到下裂为两半（太 27:51）——路被打通了</text>
+      <text x="230" y="364" class="cap" text-anchor="middle">来 10:19–22：我们因耶稣的血，得以坦然进入至圣所</text>
+    </svg>
+    <figcaption>会幕不是古董，是<b>一张福音的地图</b>。从东门到约柜的每一步，都是罪人靠近圣洁之神的必经次序。</figcaption></figure>
+
+    <figure><svg viewBox="0 0 460 380" role="img" aria-label="信仰之盾 Scutum Fidei 三一关系图">
+      <text x="230" y="24" font-size="13.5" font-weight="700" fill="var(--navy)" text-anchor="middle">信仰之盾　Scutum Fidei</text>
+      <circle cx="230" cy="200" r="46" fill="var(--card-2)" stroke="var(--gold)" stroke-width="2.4"/>
+      <text x="230" y="196" font-size="15" font-weight="700" fill="var(--gold)" text-anchor="middle">神</text>
+      <text x="230" y="216" font-size="10" fill="var(--ink-3)" text-anchor="middle">DEUS</text>
+      <circle cx="230" cy="80" r="42" fill="var(--card)" stroke="var(--navy)" stroke-width="2.2"/>
+      <text x="230" y="78" font-size="14" font-weight="700" fill="var(--navy)" text-anchor="middle">父</text>
+      <text x="230" y="96" font-size="10" fill="var(--ink-3)" text-anchor="middle">PATER</text>
+      <circle cx="96" cy="310" r="42" fill="var(--card)" stroke="var(--burg)" stroke-width="2.2"/>
+      <text x="96" y="308" font-size="14" font-weight="700" fill="var(--burg)" text-anchor="middle">子</text>
+      <text x="96" y="326" font-size="10" fill="var(--ink-3)" text-anchor="middle">FILIUS</text>
+      <circle cx="364" cy="310" r="42" fill="var(--card)" stroke="var(--teal)" stroke-width="2.2"/>
+      <text x="364" y="308" font-size="14" font-weight="700" fill="var(--teal)" text-anchor="middle">圣灵</text>
+      <text x="364" y="326" font-size="10" fill="var(--ink-3)" text-anchor="middle">S. SANCTUS</text>
+      <g stroke="var(--gold)" stroke-width="2.2">
+        <line x1="230" y1="122" x2="230" y2="154"/>
+        <line x1="196" y1="232" x2="132" y2="278"/>
+        <line x1="264" y1="232" x2="328" y2="278"/>
+      </g>
+      <g stroke="var(--rule-2)" stroke-width="2" stroke-dasharray="6 4">
+        <line x1="134" y1="278" x2="196" y2="118"/>
+        <line x1="326" y1="278" x2="264" y2="118"/>
+        <line x1="138" y1="310" x2="322" y2="310"/>
+      </g>
+      <g font-size="10.4" fill="var(--gold)" text-anchor="middle" font-weight="700">
+        <text x="248" y="144">是</text><text x="150" y="246">是</text><text x="312" y="246">是</text>
+      </g>
+      <g font-size="10.4" fill="var(--ink-3)" text-anchor="middle">
+        <text x="146" y="198">不是</text><text x="316" y="198">不是</text><text x="230" y="302">不是</text>
+      </g>
+      <text x="230" y="368" class="cap" text-anchor="middle">三个位格各自完全是神，彼此却不是对方——一本质，三位格</text>
+    </svg>
+    <figcaption>中世纪以来用于教导三一论的经典图形。它一次封死了三条歧路：<b>形态论</b>（三位格只是三种面貌）、<b>三神论</b>（三个神）、<b>次位论</b>（子与灵低于父）。亚他那修信经用四十四条说的，这张图用六条线说完。</figcaption></figure>
+  </div>
+
+  <h3 id="p12-8">12.8 动态图表：比例与分布</h3>
+  <p>下面三组图表由逐卷数据实时生成，数值精确。滚动到视野内时会自动展开；点类别可高亮。</p>
+  <div class="viz" id="chartWrap">
+    <div class="vizbar no-print" id="chartBar" role="group" aria-label="按类别高亮"></div>
+    <figure><div id="chapChart"></div>
+    <figcaption>六十六卷的章数分布。<b>诗篇 150 章一卷抵得上十二小先知加起来还多</b>；新约二十七卷中有九卷只有一至五章。篇幅与重要性无关，但它确实说明了各卷的文体与用途。</figcaption></figure>
+  </div>
+  <div class="g2">
+    <figure><div id="pieChart"></div>
+    <figcaption>旧约与新约的体量对比。这张图提醒一件常被忽略的事：<b>基督徒读得最少的部分，恰恰占了圣经的四分之三。</b></figcaption></figure>
+    <figure><div id="groupChart"></div>
+    <figcaption>九大分组的卷数与章数。历史书与大先知是章数最重的两块，而普通书信卷数虽多、篇幅极轻。</figcaption></figure>
+  </div>
+
+  <h3 id="p12-9">12.9 动态时间轴：按下播放</h3>
+  <p>点「播放」，十二个节点会依次点亮一遍。这不是装饰——按次序看一遍，比一眼扫过整条轴更容易记住它们的<strong>先后关系</strong>。</p>
+  <div class="viz" id="playAxis">
+    <div class="vizbar no-print">
+      <button class="btn" id="axisPlay">▶ 播放</button>
+      <button class="btn" id="axisAll">全部点亮</button>
+      <span class="hint">再次点击可重播</span>
+    </div>
+    <figure><svg viewBox="0 0 900 200" role="img" aria-label="可播放的救赎历史十二节点时间轴">
+      <line x1="30" y1="104" x2="870" y2="104" stroke="var(--rule-2)" stroke-width="3"/>
+      <g id="axisNodes" text-anchor="middle">
+        <g class="step" data-i="0"><circle cx="58" cy="104" r="8" fill="var(--green)"/><text x="58" y="86" font-size="11.6" font-weight="700" fill="var(--green)">创造</text><text x="58" y="128" class="cap">创 1–2</text></g>
+        <g class="step" data-i="1"><circle cx="132" cy="104" r="8" fill="var(--burg)"/><text x="132" y="86" font-size="11.6" font-weight="700" fill="var(--burg)">堕落</text><text x="132" y="128" class="cap">创 3</text></g>
+        <g class="step" data-i="2"><circle cx="206" cy="104" r="8" fill="var(--ink-3)"/><text x="206" y="86" font-size="11.6" font-weight="700" fill="var(--ink-2)">洪水·巴别</text><text x="206" y="128" class="cap">创 6–11</text></g>
+        <g class="step" data-i="3"><circle cx="286" cy="104" r="8" fill="var(--gold)"/><text x="286" y="86" font-size="11.6" font-weight="700" fill="var(--gold)">亚伯拉罕</text><text x="286" y="128" class="cap">约 2091 BC</text></g>
+        <g class="step" data-i="4"><circle cx="370" cy="104" r="8" fill="var(--rust)"/><text x="370" y="86" font-size="11.6" font-weight="700" fill="var(--rust)">出埃及</text><text x="370" y="128" class="cap">约 1446 BC</text></g>
+        <g class="step" data-i="5"><circle cx="452" cy="104" r="8" fill="var(--olive)"/><text x="452" y="86" font-size="11.6" font-weight="700" fill="var(--olive)">士师</text><text x="452" y="128" class="cap">约 1375–1050</text></g>
+        <g class="step" data-i="6"><circle cx="530" cy="104" r="8" fill="var(--navy)"/><text x="530" y="86" font-size="11.6" font-weight="700" fill="var(--navy)">大卫之约</text><text x="530" y="128" class="cap">约 1000 BC</text></g>
+        <g class="step" data-i="7"><circle cx="606" cy="104" r="8" fill="var(--rust)"/><text x="606" y="86" font-size="11.6" font-weight="700" fill="var(--rust)">分裂</text><text x="606" y="128" class="cap">931 BC</text></g>
+        <g class="step" data-i="8"><circle cx="676" cy="104" r="8" fill="var(--burg)"/><text x="676" y="86" font-size="11.6" font-weight="700" fill="var(--burg)">被掳</text><text x="676" y="128" class="cap">722 / 586 BC</text></g>
+        <g class="step" data-i="9"><circle cx="744" cy="104" r="8" fill="var(--teal)"/><text x="744" y="86" font-size="11.6" font-weight="700" fill="var(--teal)">归回</text><text x="744" y="128" class="cap">538 BC 起</text></g>
+        <g class="step" data-i="10"><circle cx="808" cy="104" r="10" fill="var(--burg)"/><text x="808" y="82" font-size="12.6" font-weight="700" fill="var(--burg)">基督</text><text x="808" y="128" class="cap">约 4 BC–30 AD</text></g>
+        <g class="step" data-i="11"><circle cx="864" cy="104" r="8" fill="var(--gold)"/><text x="864" y="86" font-size="11.6" font-weight="700" fill="var(--gold)">再来</text><text x="864" y="128" class="cap">将来</text></g>
+      </g>
+      <rect x="30" y="150" width="840" height="34" rx="8" fill="var(--card-2)" stroke="var(--rule)" stroke-width="1"/>
+      <text x="450" y="171" class="cap" text-anchor="middle" id="axisCap">十二个节点，是全书任何一段经文的定位坐标——先问它落在哪两个节点之间</text>
+    </svg></figure>
+  </div>
+
+  <h3 id="p12-10">12.10 三组新对照表</h3>
+  <div class="tw"><table class="cmp">
+    <caption>以色列的七大节期 ⇄ 基督的成全（利 23）</caption>
+    <thead><tr><th style="width:11ch">节期</th><th style="width:9ch">时间</th><th style="width:18ch">所纪念的</th><th>在基督里的成全</th></tr></thead>
+    <tbody>
+      <tr><td class="k">逾越节</td><td>正月十四</td><td>羔羊的血使灭命者越过</td><td>基督是我们逾越节的羔羊，已经被杀献祭（林前 5:7）</td></tr>
+      <tr><td class="k">无酵节</td><td>正月十五起七日</td><td>除尽酵，急速出埃及</td><td>除净旧酵，用诚实真正的无酵饼守节（林前 5:8）——成圣</td></tr>
+      <tr><td class="k">初熟节</td><td>安息日次日</td><td>献上收成的头一捆</td><td>基督已经复活，成为睡了之人初熟的果子（林前 15:20）</td></tr>
+      <tr><td class="k">五旬节</td><td>初熟节后五十日</td><td>献新素祭，纪念赐律法</td><td>圣灵浇灌，律法写在心版上，三千人归主（徒 2）</td></tr>
+      <tr><td class="k">吹角节</td><td>七月初一</td><td>吹角警醒，召聚会众</td><td>号筒末次吹响，死人复活（林前 15:52）——尚未应验</td></tr>
+      <tr><td class="k">赎罪日</td><td>七月初十</td><td>一年一次进入至圣所</td><td>基督一次献上自己，永远成了（来 9:12）</td></tr>
+      <tr><td class="k">住棚节</td><td>七月十五起七日</td><td>住棚纪念旷野，庆丰收</td><td>道成了肉身，支搭帐棚在我们中间（约 1:14）；终极应验在启 21:3"神的帐幕在人间"</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box teal"><span class="tag">值得注意的次序</span><p>前四个节期集中在春季，已在基督第一次降临时逐一应验，<strong>且次序完全吻合</strong>：受难—除酵—复活—圣灵降临。后三个集中在秋季，与第二次降临相关，尚未应验。这一分布本身就是"已然／未然"的礼仪版本。须谨守分寸：这是<strong>神学上的对应</strong>，不是可用来推算日期的密码。</p></div>
+
+  <div class="tw"><table class="cmp">
+    <caption>会幕器具 ⇄ 含义 ⇄ 新约对应</caption>
+    <thead><tr><th style="width:10ch">器具</th><th style="width:8ch">位置</th><th style="width:16ch">功用</th><th>新约的对应</th></tr></thead>
+    <tbody>
+      <tr><td class="k">燔祭坛</td><td>外院</td><td>献牲流血，赎罪</td><td>十字架：没有流血，罪就不得赦免（来 9:22）</td></tr>
+      <tr><td class="k">洗濯盆</td><td>外院</td><td>祭司事奉前洗手洗脚</td><td>重生的洗与圣灵的更新（多 3:5）；约 13 洗脚的日常洁净</td></tr>
+      <tr><td class="k">金灯台</td><td>圣所南侧</td><td>唯一的光源，昼夜常明</td><td>我是世界的光（约 8:12）；灯台亦指教会（启 1:20）</td></tr>
+      <tr><td class="k">陈设饼桌</td><td>圣所北侧</td><td>十二个饼，代表十二支派</td><td>我就是生命的粮（约 6:35）；圣餐中的真实喂养</td></tr>
+      <tr><td class="k">金香坛</td><td>幔子前</td><td>早晚烧香，香气上腾</td><td>圣徒的祈祷（启 5:8）；基督在父面前的代求（来 7:25）</td></tr>
+      <tr><td class="k">幔子</td><td>圣所与至圣所之间</td><td>隔断人与神的同在</td><td>祂的身体（来 10:20）；断气时从上到下裂开</td></tr>
+      <tr><td class="k">约柜与施恩座</td><td>至圣所</td><td>神同在的宝座，血弹于其上</td><td>挽回祭（罗 3:25，原文即"施恩座"一词）</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="tw"><table class="cmp">
+    <caption>十诫 ⇄ 海德堡问号 ⇄ 正面要求（海德堡的解释一律"禁止什么＋要求什么"）</caption>
+    <thead><tr><th style="width:5ch">诫</th><th style="width:15ch">条文要点</th><th style="width:8ch">海德堡</th><th>正面要求（不止于"不做"）</th></tr></thead>
+    <tbody>
+      <tr><td class="k">一</td><td>除我以外，不可有别的神</td><td>94–95</td><td>正确认识独一真神、单单信靠、谦卑顺服、专向祂求一切好处</td></tr>
+      <tr><td class="k">二</td><td>不可为自己雕刻偶像</td><td>96–98</td><td>只用神在圣言中所吩咐的方式敬拜祂——规范性原则的根据</td></tr>
+      <tr><td class="k">三</td><td>不可妄称神的名</td><td>99–102</td><td>以敬畏尊崇称呼、承认、呼求祂的名；合宜的起誓是许可的</td></tr>
+      <tr><td class="k">四</td><td>当记念安息日，守为圣日</td><td>103</td><td>维持福音职事与学校、殷勤赴教会领受道与圣礼；今生就开始永远的安息</td></tr>
+      <tr><td class="k">五</td><td>当孝敬父母</td><td>104</td><td>尊敬顺服父母与一切在上有权柄的，连他们的软弱也要忍耐</td></tr>
+      <tr><td class="k">六</td><td>不可杀人</td><td>105–107</td><td>连思念、言语、态度上的恨恶也要除去；要爱邻舍、待人温和、止息伤害</td></tr>
+      <tr><td class="k">七</td><td>不可奸淫</td><td>108–109</td><td>身体与心思都保持圣洁，避开一切引诱之事</td></tr>
+      <tr><td class="k">八</td><td>不可偷盗</td><td>110–111</td><td>促进邻舍的益处，勤劳工作以供应缺乏的人；假秤、高利贷同属偷盗</td></tr>
+      <tr><td class="k">九</td><td>不可作假见证</td><td>112</td><td>爱真理、坦白直说、维护邻舍的名誉；不未审先断</td></tr>
+      <tr><td class="k">十</td><td>不可贪恋</td><td>113–115</td><td>连最微小的违逆心思也不可动；一生以神一切的诫命为方向（第 114 问"微小的开端"）</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box green"><span class="tag">一条读法上的提醒</span><p>海德堡解释十诫时有一个固定动作：<strong>每一诫都问两遍</strong>——"神在此禁止什么"与"神在此要求什么"。这使十诫从一串禁令变成一幅正面的生活图景，也让它稳稳地落在"感恩"部分而不是"惨况"部分。教导孩子时，先讲正面要求，再讲禁止，往往效果更好。</p></div>
+</section>

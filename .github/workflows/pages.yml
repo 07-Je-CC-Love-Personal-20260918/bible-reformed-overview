@@ -1,0 +1,35 @@
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build single-file HTML from shards
+        run: |
+          bash build.sh
+          cp site/index.html docs/index.html
+      - name: Validate
+        run: |
+          test -s site/index.html
+          grep -q '</html>' site/index.html
+          echo "size: $(wc -c < site/index.html) bytes"
+      - name: Commit build output if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- site/index.html docs/index.html; then
+            git add site/index.html docs/index.html
+            git commit -m "chore: rebuild single-file HTML [skip ci]"
+            git push
+          else
+            echo "no changes"
+          fi
