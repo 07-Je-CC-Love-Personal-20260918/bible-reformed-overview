@@ -4,3 +4,4 @@ package.json
 *.log
 .DS_Store
 site/.netlify/
+site/netlify.toml
