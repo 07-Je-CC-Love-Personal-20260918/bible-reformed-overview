@@ -11,6 +11,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      SURGE_DOMAIN: bible-reformed-20261021-v2-0-0-ccstudy.surge.sh
     steps:
       - uses: actions/checkout@v4
       - name: Build classic single-file page and sync site/ -> docs/ (GitHub Pages)
@@ -32,7 +35,7 @@ jobs:
             echo "no changes"
           fi
       - name: Deploy to Surge
-        if: ${{ env.SURGE_TOKEN != '' }}
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: npx --yes surge@0.24.6 ./site bible-reformed-20261021-v2-0-0-ccstudy.surge.sh --token "$SURGE_TOKEN"
+        if: env.SURGE_TOKEN != ''
+        run: |
+          npx --yes surge@0.24.6 ./site "$SURGE_DOMAIN" --token "$SURGE_TOKEN"
+          echo "Surge: https://$SURGE_DOMAIN" >> "$GITHUB_STEP_SUMMARY"
