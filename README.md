@@ -1,7 +1,7 @@
 # 📖 圣经全景 · 欧陆改革宗 — CCstudy
 
 **主题**：bible-reformed（整本圣经 · 圣约神学 · 三大普世信经 · 三项联合信条）
-**时间**：2026-10-21 **版本**：v2.0.0 **标识**：CCstudy
+**时间**：2026-10-21 **版本**：v2.1.0 **标识**：CCstudy
 
 ## 🔗 链接
 
@@ -9,8 +9,8 @@
 |---|---|---|
 | 仓库 | https://github.com/07-Je-CC-Love-Personal-20260918/bible-reformed-overview | ✅ |
 | GitHub Pages | https://07-je-cc-love-personal-20260918.github.io/bible-reformed-overview/ | ✅ 每次推送到 main 后自动更新（从 `/docs` 发布） |
-| Netlify | https://bible-reformed-20261021-v2-ccstudy.netlify.app | ✅ 已关联仓库，每次推送到 main 自动发布 `site/` |
-| Surge | https://bible-reformed-20261021-v2-0-0-ccstudy.surge.sh | ✅ 组织级 `SURGE_TOKEN`，每次推送到 main 自动发布 `site/` |
+| Netlify | https://bible-reformed-20261021-v2-1-ccstudy.netlify.app | ✅ 已关联仓库，每次推送到 main 自动发布 `site/` |
+| Surge | https://bible-reformed-20261021-v2-1-0-ccstudy.surge.sh | ✅ 组织级 `SURGE_TOKEN`，每次推送到 main 自动发布 `site/` |
 
 > 仓库计划改名为 **bible-reformed-overview-CCstudy**（Settings → General → Repository name）。改名后旧地址会自动跳转，Pages 地址会变为 `…github.io/bible-reformed-overview-CCstudy/`。
 
@@ -31,7 +31,8 @@
 | 版本 | 日期 | 说明 | 恢复 |
 |---|---|---|---|
 | v1.0.0 | 2026-10-21 之前 | 单文件“圣经全解”经典版 | 分支 `legacy-v1.0.0-20261021`：`git checkout legacy-v1.0.0-20261021` |
-| **v2.0.0** | 2026-10-21 | CCstudy 改版：多页面、4 主题、66 卷逐卷、信经全文与背诵、交互地图；经典版保留为 `classic.html` | `main` |
+| v2.0.0 | 2026-10-21 | CCstudy 改版：多页面、4 主题、66 卷逐卷、信经全文与背诵、交互地图；经典版保留为 `classic.html` | 提交 v2.0.0 |
+| **v2.1.0** | 2026-10-21 | 顺滑版：Lenis 惯性滚动、rAF 节流和 IntersectionObserver、去掉逐卡毛玻璃（滚动由约 16 fps 提升到约 60 fps）；飘动云背景（只用 transform 动画）；主题增至 7 套（新增海洋、樱花、水墨），切换时用 View Transitions 淡入；新增王与先知甘特图、12 时代×书卷对照表、七锚点闪卡、66 卷闪卡模式；笔记标记新增彩色底纹、双下划线、彩色标签、序号 | `main` |
 
 ## 🚀 部署与运维
 

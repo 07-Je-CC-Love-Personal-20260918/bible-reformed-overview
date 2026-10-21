@@ -27,6 +27,7 @@ sup{font-size:.65em;color:var(--acc2);margin:0 1px}
 </style>
 </head>
 <body>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="prog"></div>
 <header class="top">
   <button class="btn" id="tocBtn">☰ 目录</button>
@@ -38,7 +39,10 @@ sup{font-size:.65em;color:var(--acc2);margin:0 1px}
     <span class="sw" data-t="dawn" style="background:#b5562b"></span>
     <span class="sw" data-t="night" style="background:#1b2236"></span>
     <span class="sw" data-t="olive" style="background:#4f7a1f"></span>
-    <span class="sw" data-t="royal" style="background:#6b3fb5"></span>
+    <span class="sw" data-t="royal" style="background:#6b3fb5" title="君王紫"></span>
+    <span class="sw" data-t="ocean" style="background:#0e7490" title="海洋"></span>
+    <span class="sw" data-t="sakura" style="background:#c2185b" title="樱花"></span>
+    <span class="sw" data-t="ink" style="background:#1b1b1b" title="水墨"></span>
   </div>
 </header>
 <div class="wrap">
@@ -1089,9 +1093,10 @@ sup{font-size:.65em;color:var(--acc2);margin:0 1px}
 </table></div>
 <div class="box hard"><span class="u3">风格差异</span>：海德堡要理问答以<span class="u2">“安慰”</span>开篇，比较个人化、温暖；威斯敏斯特小要理问答以<span class="u2">“神的荣耀”</span>开篇，比较客观、系统。两者的教义实质一致，侧重点不同。</div>
 </section>
-<footer>CCstudy · 信经与信条 v2.0.0 · 2026-10-21</footer>
+<footer>CCstudy · 信经与信条 v2.1.0 · 2026-10-21</footer>
 </main></div>
 <div class="fab"><button class="btn" id="upBtn">↑</button></div>
+<script src="assets/lenis.min.js"></script>
 <script src="assets/app.js"></script>
 <script>
 document.querySelectorAll('[data-all]').forEach(b=>b.onclick=()=>{const o=b.classList.toggle('on');document.querySelectorAll('#'+b.dataset.all+' details').forEach(d=>d.open=o)});

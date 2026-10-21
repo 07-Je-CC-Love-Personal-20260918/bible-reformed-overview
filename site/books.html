@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="prog"></div>
 <header class="top">
   <button class="btn" id="tocBtn">☰ 目录</button>
@@ -30,7 +31,10 @@
     <span class="sw" data-t="dawn" style="background:#b5562b"></span>
     <span class="sw" data-t="night" style="background:#1b2236"></span>
     <span class="sw" data-t="olive" style="background:#4f7a1f"></span>
-    <span class="sw" data-t="royal" style="background:#6b3fb5"></span>
+    <span class="sw" data-t="royal" style="background:#6b3fb5" title="君王紫"></span>
+    <span class="sw" data-t="ocean" style="background:#0e7490" title="海洋"></span>
+    <span class="sw" data-t="sakura" style="background:#c2185b" title="樱花"></span>
+    <span class="sw" data-t="ink" style="background:#1b1b1b" title="水墨"></span>
   </div>
 </header>
 <div class="wrap">
@@ -44,8 +48,9 @@
 <input class="search" id="q" placeholder="🔍 搜索书卷、关键词，例如：约、称义、王">
 <div class="tabs" id="chips"></div>
 </div>
+<div id="cards" class="grid" style="display:none"></div>
 <div id="list"></div>
-<footer>CCstudy · 66 卷 v2.0.0 · 2026-10-21</footer>
+<footer>CCstudy · 66 卷 v2.1.0 · 2026-10-21</footer>
 </main></div>
 <div class="fab"><button class="btn" id="upBtn">↑</button></div>
 <script src="assets/books-ot.js"></script>
@@ -82,14 +87,18 @@ document.getElementById('toc').innerHTML=toc;document.getElementById('list').inn
 // 分布条
 document.getElementById('gbar').innerHTML=groups.map(gr=>`<div title="${gr.key}" data-n="${gr.items.length}" style="flex:${gr.items.length};background:${C[gr.g]}" onclick="location.hash='g-${gr.key}'">${gr.items.length>3?gr.g+gr.items.length:gr.items.length}</div>`).join('');
 // 过滤
-const chips=document.getElementById('chips');chips.innerHTML='<button class="btn on" data-g="">全部 66</button>'+G.map(g=>`<button class="btn" data-g="${g}">${IC[g]} ${g}</button>`).join('')+'<button class="btn" id="openAll">展开全部</button>';
+const chips=document.getElementById('chips');chips.innerHTML='<button class="btn on" data-g="">全部 66</button>'+G.map(g=>`<button class="btn" data-g="${g}">${IC[g]} ${g}</button>`).join('')+'<button class="btn" id="openAll">展开全部</button><button class="btn" id="flashBtn">🃏 闪卡模式</button>';
 let cur='';const apply=()=>{const q=document.getElementById('q').value.trim();
   document.querySelectorAll('.bk').forEach(d=>{const ok=(!cur||d.dataset.g===cur)&&(!q||d.dataset.s.includes(q));d.style.display=ok?'':'none';if(q&&ok)d.open=true;d.classList.add('in')});
   document.querySelectorAll('#list section').forEach(s=>s.style.display=[...s.querySelectorAll('.bk')].some(d=>d.style.display!=='none')?'':'none')};
 chips.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>{cur=b.dataset.g;chips.querySelectorAll('[data-g]').forEach(x=>x.classList.toggle('on',x===b));apply()});
 document.getElementById('openAll').onclick=e=>{const o=e.target.classList.toggle('on');document.querySelectorAll('.bk').forEach(d=>d.open=o);e.target.textContent=o?'收起全部':'展开全部'};
 document.getElementById('q').oninput=apply;
+const cards=document.getElementById('cards');
+cards.innerHTML=B.map(b=>`<div class="flash" data-g="${b.g}"><div class="in"><div class="f" style="background:linear-gradient(135deg,${C[b.g]},var(--acc2))"><b style="font-size:1.4rem">${b.n}</b><span style="opacity:.9">${b.k}</span><small style="opacity:.8">${IC[b.g]} ${b.g} · 点我翻面</small></div><div class="bk"><div style="font-size:.9rem">${b.core}</div><div style="margin-top:8px"><span class="m">${b.mem}</span></div></div></div></div>`).join('');
+document.getElementById('flashBtn').onclick=e=>{const on=e.target.classList.toggle('on');cards.style.display=on?'':'none';document.getElementById('list').style.display=on?'none':'';};
 })();
 </script>
+<script src="assets/lenis.min.js"></script>
 <script src="assets/app.js"></script>
 </body></html>

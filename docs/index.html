@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="prog"></div>
 <header class="top">
   <button class="btn" id="tocBtn" aria-label="目录">☰ 目录</button>
@@ -20,6 +21,9 @@
     <span class="sw" data-t="night" style="background:#1b2236" title="夜读"></span>
     <span class="sw" data-t="olive" style="background:#4f7a1f" title="橄榄"></span>
     <span class="sw" data-t="royal" style="background:#6b3fb5" title="君王紫"></span>
+    <span class="sw" data-t="ocean" style="background:#0e7490" title="海洋"></span>
+    <span class="sw" data-t="sakura" style="background:#c2185b" title="樱花"></span>
+    <span class="sw" data-t="ink" style="background:#1b1b1b" title="水墨"></span>
   </div>
 </header>
 <div class="wrap">
@@ -33,6 +37,9 @@
   <div class="grp">二 · 时间与空间</div>
   <a href="#timeline">⏳ 总时间线</a>
   <a href="#kings">👑 王朝速记</a>
+  <a href="#gantt-sec">📊 王与先知甘特图</a>
+  <a href="#eras">🧭 12 时代×书卷</a>
+  <a href="#anchors">🃏 七锚点闪卡</a>
   <a href="#empires">🏛️ 六大帝国</a>
   <a href="#map">🗺️ 地图</a>
   <a href="#culture">🌍 文化区域</a>
@@ -241,6 +248,46 @@
 </table></div>
 </section>
 
+<section id="gantt-sec" class="reveal">
+<h2>📊 王与先知甘特图 <span class="tag">一图看懂 931–586</span></h2>
+<div class="card legend"><span><span class="pill g">绿</span>善王</span><span><span class="pill r">红</span>恶王</span><span><span class="pill b">蓝</span>写作先知</span><span>红色虚线 = 关键事件</span></div>
+<div class="svgbox card" id="gantt"></div>
+<div class="box key">看图读出 <b>3 个规律</b>：<span class="num">1</span>北国王位<span class="hl-r">更替频繁、9 个王朝</span>，南国<span class="hl-g">始终是大卫一脉</span>；<span class="num">2</span>写作先知<span class="hl-b">集中在亚述与巴比伦两次危机</span>前后；<span class="num">3</span>有多处<span class="u3">重叠的横条</span>，那是父子<span class="k">共同摄政</span>，所以年数相加会对不上。</div>
+</section>
+
+<section id="eras" class="reveal">
+<h2>🧭 12 时代 × 书卷对照 <span class="tag">把 66 卷挂到时间线上</span></h2>
+<div class="tbl"><table>
+<tr><th>#</th><th>时代</th><th>年代（约）</th><th>叙事书卷</th><th>同期书卷</th><th>一句话</th></tr>
+<tr><td><span class="num">1</span></td><td>🌍 原初</td><td>—</td><td>创 1–11</td><td>—</td><td>神造、人堕、神审、神存留</td></tr>
+<tr><td><span class="num">2</span></td><td>⭐ 族长</td><td class="d">前2100–1800</td><td>创 12–50</td><td>伯（背景）</td><td>应许：地、后裔、福</td></tr>
+<tr><td><span class="num">3</span></td><td>🔥 出埃及与旷野</td><td class="d">前1446–1406</td><td>出 利 民 申</td><td>诗 90</td><td>救赎 → 立约 → 同住</td></tr>
+<tr><td><span class="num">4</span></td><td>⚔️ 征服</td><td class="d">前1406–1380</td><td>书</td><td>—</td><td>应许之地得着</td></tr>
+<tr><td><span class="num">5</span></td><td>🔄 士师</td><td class="d">前1380–1050</td><td>士 得</td><td>—</td><td>没有王，各人任意而行</td></tr>
+<tr><td><span class="num">6</span></td><td>👑 联合王国</td><td class="d">前1050–931</td><td>撒上 撒下 王上 1–11；代上、代下 1–9</td><td>诗 箴 传 歌</td><td>大卫之约、圣殿</td></tr>
+<tr><td><span class="num">7</span></td><td>💔 分裂王国</td><td class="d">前931–722</td><td>王上 12 – 王下 17；代下 10–28</td><td>珥？ 拿 摩 何 赛 弥</td><td>北国背约 → 亚述</td></tr>
+<tr><td><span class="num">8</span></td><td>🕯️ 南国独存</td><td class="d">前722–586</td><td>王下 18–25；代下 29–36</td><td>鸿 番 哈 耶 哀 俄</td><td>两次复兴仍亡于巴比伦</td></tr>
+<tr><td><span class="num">9</span></td><td>⛓️ 被掳</td><td class="d">前605–538</td><td>—</td><td>但 结</td><td>神在异地掌权</td></tr>
+<tr><td><span class="num">10</span></td><td>🕊️ 归回</td><td class="d">前538–430</td><td>拉 尼 斯</td><td>该 亚 玛</td><td>殿、城、约重建</td></tr>
+<tr><td><span class="num">11</span></td><td>✝️ 基督</td><td class="d">前5 – 主后30</td><td>太 可 路 约</td><td>—</td><td>一切应许的“是”</td></tr>
+<tr><td><span class="num">12</span></td><td>🔥 教会</td><td class="d">主后30–95</td><td>徒</td><td>21 封书信、启</td><td>福音到地极，等候再来</td></tr>
+</table></div>
+<div class="box mem">“<b>原族出征士，联分南掳归，基督教会</b>”：12 个时代，念 3 遍。</div>
+</section>
+
+<section id="anchors" class="reveal">
+<h2>🃏 七锚点闪卡 <span class="tag">点卡片翻面</span></h2>
+<div class="grid">
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 2000</b><br>是谁？</div><div class="bk">⭐ <b>亚伯拉罕</b>蒙召<br><span class="m">地、后裔、福</span>（创 12）</div></div></div>
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 1446</b><br>发生什么？</div><div class="bk">🔥 <b>出埃及</b><br>王上 6:1：再过 480 年建殿</div></div></div>
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 1010</b><br>是谁？</div><div class="bk">👑 <b>大卫</b>登基<br><span class="m">撒下 7 大卫之约</span></div></div></div>
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 931</b><br>发生什么？</div><div class="bk">💔 <b>王国分裂</b><br>耶罗波安 vs 罗波安</div></div></div>
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 722</b><br>发生什么？</div><div class="bk">🦁 <b>亚述灭北国</b><br>撒玛利亚陷落（王下 17）</div></div></div>
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 586</b><br>发生什么？</div><div class="bk">🐉 <b>巴比伦毁圣殿</b><br>南国亡（王下 25）</div></div></div>
+<div class="flash"><div class="in"><div class="f"><b style="font-size:1.6rem">前 538</b><br>发生什么？</div><div class="bk">🕊️ <b>古列下诏归回</b><br>前 516 第二圣殿完工</div></div></div>
+</div>
+</section>
+
 <section id="empires" class="reveal">
 <h2>🏛️ 六大帝国更替 <span class="tag">但以理书的骨架</span></h2>
 <div class="tbl"><table>
@@ -424,10 +471,12 @@
 <div class="card">🏛️ 长老会改革宗：<a href="https://opc.org">opc.org</a>；神学院：<a href="https://canadianreformedseminary.ca">CRTS</a> · <a href="https://www.wts.edu">WTS</a></div>
 </div>
 </section>
-<footer>CCstudy · 圣经全景 v2.0.0 · 2026-10-21 · 66 卷全本</footer>
+<footer>CCstudy · 圣经全景 v2.1.0 · 2026-10-21 · 顺滑版</footer>
 </main></div>
 <div class="fab"><button class="btn" id="upBtn" title="回到顶部">↑</button></div>
 <script src="assets/leaflet/leaflet.js"></script>
+<script src="assets/lenis.min.js"></script>
 <script src="assets/app.js"></script>
 <script src="assets/map.js"></script>
+<script src="assets/gantt.js"></script>
 </body></html>
