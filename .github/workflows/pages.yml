@@ -36,9 +36,3 @@ jobs:
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: npx --yes surge@0.24.6 ./site bible-reformed-20261021-v2-0-0-ccstudy.surge.sh --token "$SURGE_TOKEN"
-      - name: Deploy to Netlify
-        if: ${{ env.NETLIFY_AUTH_TOKEN != '' && env.NETLIFY_SITE_ID != '' }}
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: npx --yes netlify-cli@17.38.1 deploy --prod --dir site

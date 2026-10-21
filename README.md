@@ -9,7 +9,7 @@
 |---|---|---|
 | 仓库 | https://github.com/07-Je-CC-Love-Personal-20260918/bible-reformed-overview | ✅ |
 | GitHub Pages | https://07-je-cc-love-personal-20260918.github.io/bible-reformed-overview/ | ✅ 每次推送到 main 后自动更新（从 `/docs` 发布） |
-| Netlify | https://bible-reformed-20261021-v2-0-0-ccstudy.netlify.app | ⏳ 需配置 Secrets（见下文） |
+| Netlify | https://bible-reformed-20261021-v2-ccstudy.netlify.app | ✅ 已关联仓库，每次推送到 main 自动发布 `site/` |
 | Surge | https://bible-reformed-20261021-v2-0-0-ccstudy.surge.sh | ⏳ 需配置 Secrets（见下文） |
 
 > 仓库计划改名为 **bible-reformed-overview-CCstudy**（Settings → General → Repository name）。改名后旧地址会自动跳转，Pages 地址会变为 `…github.io/bible-reformed-overview-CCstudy/`。
@@ -36,12 +36,11 @@
 ## 🚀 部署与运维
 
 - **GitHub Pages**：`.github/workflows/pages.yml` 先构建经典版，再把 `site/` 同步到 `docs/` 并提交。Pages 从 main 分支的 `/docs` 发布。
-- **Surge / Netlify**：在仓库 Settings → Secrets and variables → Actions 中添加：
+- **Netlify**：已在 Netlify 中直接关联本仓库（发布目录 `site`），推送后自动部署，不需要令牌。
+- **Surge**：在组织或仓库 Settings → Secrets and variables → Actions 中添加：
   - `SURGE_TOKEN`：本地运行 `npx surge login`，再运行 `npx surge token` 获取
-  - `NETLIFY_AUTH_TOKEN`：在 Netlify 的 User settings → Applications 中获取
-  - `NETLIFY_SITE_ID`：先在 Netlify 新建站点 `bible-reformed-20261021-v2-0-0-ccstudy`，再取它的 Site ID
 
-  添加后，下一次推送会自动部署到这两个平台。
+  添加后，下一次推送会自动部署到 Surge。
 - **修改内容**：
   - 新版：直接编辑 `site/` 下的文件。66 卷的数据在 `site/assets/books-*.js`。
   - 信条页：由 `scripts/build_creeds.py` 和 `scripts/creeds.tpl.html` 生成。
