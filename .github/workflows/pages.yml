@@ -13,23 +13,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build single-file HTML from shards
+      - name: Build classic single-file page and sync site/ -> docs/ (GitHub Pages)
         run: |
           bash build.sh
-          cp site/index.html docs/index.html
+          rm -rf docs && mkdir docs && cp -r site/. docs/ && touch docs/.nojekyll
       - name: Validate
         run: |
-          test -s site/index.html
-          grep -q '</html>' site/index.html
-          echo "size: $(wc -c < site/index.html) bytes"
+          for f in index books creeds classic; do test -s site/$f.html && grep -q '</html>' site/$f.html; done
       - name: Commit build output if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- site/index.html docs/index.html; then
-            git add site/index.html docs/index.html
-            git commit -m "chore: rebuild single-file HTML [skip ci]"
+          git add -A site docs
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: rebuild site/docs [skip ci]"
             git push
           else
             echo "no changes"
           fi
+      - name: Deploy to Surge
+        if: ${{ env.SURGE_TOKEN != '' }}
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: npx --yes surge@0.24.6 ./site bible-reformed-20261021-v2-0-0-ccstudy.surge.sh --token "$SURGE_TOKEN"
+      - name: Deploy to Netlify
+        if: ${{ env.NETLIFY_AUTH_TOKEN != '' && env.NETLIFY_SITE_ID != '' }}
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: npx --yes netlify-cli@17.38.1 deploy --prod --dir site

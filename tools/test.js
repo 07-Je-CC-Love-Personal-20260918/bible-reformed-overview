@@ -1,6 +1,6 @@
 const fs=require('fs');const {JSDOM}=require('jsdom');
 const errs=[];const store={};
-const dom=new JSDOM(fs.readFileSync('site/index.html','utf8'),{runScripts:'dangerously',pretendToBeVisual:true,url:'https://x.test/',
+const dom=new JSDOM(fs.readFileSync('site/classic.html','utf8'),{runScripts:'dangerously',pretendToBeVisual:true,url:'https://x.test/',
  beforeParse(w){w.matchMedia=q=>({matches:false,addEventListener(){},removeEventListener(){}});w.scrollTo=()=>{};
   Object.defineProperty(w,'localStorage',{value:{getItem:k=>k in store?store[k]:null,setItem:(k,v)=>{store[k]=String(v)},removeItem:k=>{delete store[k]}}});
   w.addEventListener('error',e=>errs.push('ERR '+e.message));}});

@@ -1,13 +1,53 @@
-# 圣经全解 · 欧陆改革宗
+# 📖 圣经全景 · 欧陆改革宗 — CCstudy
 
-> Tota Scriptura — 时间线 · 列王 · 故事线 · 圣经神学 · 圣约神学 · 认信坐标 · 记忆引擎
+**主题**：bible-reformed（整本圣经 · 圣约神学 · 三大普世信经 · 三项联合信条）
+**时间**：2026-10-21 **版本**：v2.0.0 **标识**：CCstudy
 
-一份**单文件、零外部依赖**的整本圣经解读页面，从欧陆改革宗（三大普世信经 ＋ 三项联合信条）的立场出发。
+## 🔗 链接
 
-- **线上（Netlify）**：https://bible-reformed-overview.netlify.app
-- **线上（GitHub Pages）**：https://07-je-cc-love-personal-20260918.github.io/bible-reformed-overview/
+| 平台 | 地址 | 状态 |
+|---|---|---|
+| 仓库 | https://github.com/07-Je-CC-Love-Personal-20260918/bible-reformed-overview | ✅ |
+| GitHub Pages | https://07-je-cc-love-personal-20260918.github.io/bible-reformed-overview/ | ✅ 每次推送到 main 后自动更新（从 `/docs` 发布） |
+| Netlify | https://bible-reformed-20261021-v2-0-0-ccstudy.netlify.app | ⏳ 需配置 Secrets（见下文） |
+| Surge | https://bible-reformed-20261021-v2-0-0-ccstudy.surge.sh | ⏳ 需配置 Secrets（见下文） |
 
-## 它包含什么
+> 仓库计划改名为 **bible-reformed-overview-CCstudy**（Settings → General → Repository name）。改名后旧地址会自动跳转，Pages 地址会变为 `…github.io/bible-reformed-overview-CCstudy/`。
+
+## 🗂️ 页面
+
+| 页面 | 内容 |
+|---|---|
+| `index.html` 全景 | 总纲、救赎七幕、圣约神学图、五条主线、总时间线（7 个锚点口诀）、南北国王表（善恶色标）、先知与王对照、六大帝国、Leaflet 交互地图、文化区域、正典结构、五经深读 |
+| `books.html` 66 卷 | 逐卷：钥节、为什么写、结构、核心、指向基督、难点、信条、应用、口诀；可筛选、搜索 |
+| `creeds.html` 信经与信条 | 三大普世信经与三项联合信条全文（逐字取自《中国改革宗教会敬拜手册》2015 版，含导言和经文出处）、背诵遮挡模式、海德堡按 52 主日折叠、深度对比、为什么需要三份、与威斯敏斯特信仰准则对照 |
+| `classic.html` 经典版 | v1 单文件版（时间线、列王甘特图、71 张闪卡、自测等），完整保留 |
+
+界面提供 4 套主题（晨曦、夜读、橄榄、君王紫），可点击切换；有毛玻璃效果、可隐藏目录和阅读进度条，适配手机、平板和电脑。
+笔记标记：<b>橙色粗体</b>表示核心，荧光底纹表示必背，实线是关键词，虚线是次重点，波浪线是难点；另有 🔑🧠⚠️📜🌱 提示块。
+
+## 📦 版本说明
+
+| 版本 | 日期 | 说明 | 恢复 |
+|---|---|---|---|
+| v1.0.0 | 2026-10-21 之前 | 单文件“圣经全解”经典版 | 分支 `legacy-v1.0.0-20261021`：`git checkout legacy-v1.0.0-20261021` |
+| **v2.0.0** | 2026-10-21 | CCstudy 改版：多页面、4 主题、66 卷逐卷、信经全文与背诵、交互地图；经典版保留为 `classic.html` | `main` |
+
+## 🚀 部署与运维
+
+- **GitHub Pages**：`.github/workflows/pages.yml` 先构建经典版，再把 `site/` 同步到 `docs/` 并提交。Pages 从 main 分支的 `/docs` 发布。
+- **Surge / Netlify**：在仓库 Settings → Secrets and variables → Actions 中添加：
+  - `SURGE_TOKEN`：本地运行 `npx surge login`，再运行 `npx surge token` 获取
+  - `NETLIFY_AUTH_TOKEN`：在 Netlify 的 User settings → Applications 中获取
+  - `NETLIFY_SITE_ID`：先在 Netlify 新建站点 `bible-reformed-20261021-v2-0-0-ccstudy`，再取它的 Site ID
+
+  添加后，下一次推送会自动部署到这两个平台。
+- **修改内容**：
+  - 新版：直接编辑 `site/` 下的文件。66 卷的数据在 `site/assets/books-*.js`。
+  - 信条页：由 `scripts/build_creeds.py` 和 `scripts/creeds.tpl.html` 生成。
+  - 经典版：编辑 `build/` 下的分片，然后运行 `./build.sh`。
+
+### 经典版（v1，`classic.html`）包含什么
 
 | 部分 | 内容 |
 |---|---|
@@ -54,20 +94,13 @@ docs/index.html 同一产物（GitHub Pages 发布目录）
 tools/          校验脚本
 ```
 
-## 本地构建与校验
+
+## 本地构建与校验（经典版）
 
 ```bash
-./build.sh                       # 合并分片
-npm i jsdom                      # 仅校验需要
-node tools/dump.js               # 导出渲染后的全部 SVG
-python3 tools/check_svg.py       # 检查 SVG 文字越界（应为 0）
-node tools/test.js               # 交互回归测试
+./build.sh            # 合并分片，生成 site/classic.html
+node tools/test.js    # 交互回归测试
 ```
-
-## 修改与持续部署
-
-改 `build/` 下对应分片 → `./build.sh` → `cp site/index.html docs/index.html` → 提交推送。
-Netlify 从 `site/` 发布，GitHub Pages 从 `main` 分支的 `/docs` 发布。
 
 ## 内容立场与免责
 
