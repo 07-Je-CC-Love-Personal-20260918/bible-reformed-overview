@@ -13,7 +13,7 @@
 
 
   // ---- 全站页面导航（统一注入）----
-  const PAGES=[['index.html','📖 全景'],['books.html','📚 66卷'],['gospels.html','✝️ 四福音'],['kings.html','👑 列王与历代'],['stats.html','📊 统计对比'],['creeds.html','📜 信经'],['classic.html','🏛️ 经典版']];
+  const PAGES=[['index.html','① 📖 全景'],['compare.html','② 🧩 分组对比'],['books.html','③ 📚 66 卷'],['gospels.html','④ ✝️ 四福音'],['kings.html','⑤ 👑 列王与历代'],['stats.html','⑥ 📊 统计'],['creeds.html','⑦ 📜 信经'],['classic.html','🏛️ 经典版']];
   const here=(location.pathname.split('/').pop()||'index.html');
   const top=document.querySelector('header.top');
   if(top&&!document.querySelector('.pagenav')){const pn=document.createElement('nav');pn.className='pagenav';pn.setAttribute('aria-label','页面');
@@ -25,7 +25,7 @@
 
   // ---- 惯性平滑滚动 ----
   let lenis=null;
-  if(window.Lenis&&!reduce){
+  if(window.Lenis&&!reduce&&matchMedia('(pointer:fine)').matches){
     lenis=new Lenis({duration:1.1,easing:t=>1-Math.pow(1-t,3),smoothWheel:true,syncTouch:false,
       prevent:n=>n.closest&&(n.closest('nav.toc')||n.closest('.tbl')||n.closest('.svgbox')||n.closest('#map'))});
     const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);

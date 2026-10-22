@@ -179,3 +179,9 @@ section{scroll-margin-top:100px}
 #donut svg{min-width:0;max-width:300px;flex:none}
 .donutwrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
 .dleg{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:6px 16px}
+/* 曲线描绘动画 */
+.chartbox path.draw{stroke-dasharray:2600;stroke-dashoffset:2600;transition:stroke-dashoffset 2.4s cubic-bezier(.4,.1,.2,1)}
+.reveal.in .chartbox path.draw,.chartbox.in path.draw{stroke-dashoffset:0}
+.pill{white-space:nowrap}
+/* 触屏设备：用原生惯性滚动，云更慢更轻 */
+@media(pointer:coarse){.sky i:nth-child(3){display:none}.sky i{animation-duration:70s}.top,nav.toc,.pagenav{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}}
