@@ -9,8 +9,8 @@
 |---|---|---|
 | 仓库 | https://github.com/07-Je-CC-Love-Personal-20260918/bible-reformed-overview | ✅ |
 | GitHub Pages | https://07-je-cc-love-personal-20260918.github.io/bible-reformed-overview/ | ✅ 每次推送到 main 后自动更新（从 `/docs` 发布） |
-| Netlify | https://bible-reformed-20261021-v2-2-ccstudy.netlify.app | ✅ 已关联仓库，每次推送到 main 自动发布 `site/` |
-| Surge | https://bible-reformed-20261021-v2-2-0-ccstudy.surge.sh | ✅ 组织级 `SURGE_TOKEN`，每次推送到 main 自动发布 `site/` |
+| Netlify | https://bible-reformed-20261022-v2-2-ccstudy.netlify.app | ✅ 已关联仓库，每次推送到 main 自动发布 `site/` |
+| Surge | https://bible-reformed-20261022-v2-2-0-ccstudy.surge.sh | ✅ 组织级 `SURGE_TOKEN`，每次推送到 main 自动发布 `site/` |
 
 > 仓库计划改名为 **bible-reformed-overview-CCstudy**（Settings → General → Repository name）。改名后旧地址会自动跳转，Pages 地址会变为 `…github.io/bible-reformed-overview-CCstudy/`。
 
