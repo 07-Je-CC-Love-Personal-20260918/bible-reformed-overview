@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dawn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>📊 统计与书卷对比 · CCstudy</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"><i></i><i></i><i></i></div>
+<div id="prog"></div>
+<header class="top">
+  <button class="btn" id="tocBtn" aria-label="目录">☰ 目录</button>
+  <h1>📊 统计与书卷对比</h1>
+  <div class="themes" title="切换主题"><span class="sw" data-t="dawn" style="background:#b5562b" title="晨曦"></span><span class="sw" data-t="night" style="background:#1b2236" title="夜读"></span><span class="sw" data-t="olive" style="background:#4f7a1f" title="橄榄"></span><span class="sw" data-t="royal" style="background:#6b3fb5" title="君王紫"></span><span class="sw" data-t="ocean" style="background:#0e7490" title="海洋"></span><span class="sw" data-t="sakura" style="background:#c2185b" title="樱花"></span><span class="sw" data-t="ink" style="background:#1b1b1b" title="水墨"></span></div>
+</header>
+<div class="wrap">
+<nav class="toc" data-auto></nav>
+<main>
+<div class="hero reveal"><h2>用数字看圣经</h2>
+<p>先看清全书的<b>体量和比例</b>，再看<b>书卷之间的对照</b>。数字本身不是信息，<b>比例才是</b>：神把多少篇幅给了哪里，就说明了哪里是重点。</p></div>
+
+<section id="s-kpi" class="reveal" data-grp="一 · 统计">
+<h2>🔢 全书一览</h2>
+<div class="grid" id="kpi"></div>
+<div id="otnt"></div>
+<div class="box key">旧约约占<span class="m">四分之三</span>。新约不是另起炉灶，而是旧约的应验。没有旧约这四分之三，新约那四分之一就无从理解（路 24:44）。</div>
+</section>
+
+<section id="s-ch" class="reveal">
+<h2>📊 66 卷：章数 / 节数</h2>
+<div class="tabs" id="chTog"><button class="btn on" data-k="all">全部章数</button><button class="btn" data-k="all" data-i="3">全部节数</button><button class="btn" data-k="ot">旧约章数</button><button class="btn" data-k="nt">新约章数</button></div>
+<div class="svgbox card chartbox" id="chChart"></div>
+<div class="box mem">记住<span class="hl-r">三座高峰</span>：<b>诗篇 150 章</b>（最长的书），<b>以赛亚 66 章</b>（与全本圣经的卷数相同），<b>创世记 50 章</b>。新约最长的是<b>马太、使徒行传各 28 章</b>。</div>
+</section>
+
+<section id="s-donut" class="reveal">
+<h2>🍩 按类别：篇幅占比（节）</h2>
+<div class="svgbox card" id="donut" style="max-width:640px"></div>
+<div class="box key"><span class="hl-b">历史书</span>（含使徒行传）和<span class="hl-r">先知书</span>合起来约占 44%，再加上同样以叙事为主的<span class="hl-g">律法书</span>，超过六成。圣经主要是一部<span class="m">在历史中启示的救赎史</span>，而不是格言集或哲学书。这也是改革宗“救赎历史”读经法的根据。</div>
+</section>
+
+<section id="s-rank" class="reveal">
+<h2>🏆 最长与最短（节数）</h2>
+<div class="grid">
+<div class="card"><h3>最长 10 卷</h3><div class="bars" id="longest"></div></div>
+<div class="card"><h3>最短 10 卷</h3><div class="bars" id="shortest"></div></div>
+</div>
+<div class="box mem">最短的三卷：<b>约翰二书（13 节）、约翰三书（14 节）、俄巴底亚书（21 节）</b>。最长的一章是诗篇 119 篇（176 节），最短的一章是诗篇 117 篇（2 节）。</div>
+</section>
+
+<section id="s-auth" class="reveal">
+<h2>✍️ 写书最多的作者（按卷数）</h2>
+<div class="card bars" id="authors"></div>
+<div class="box hard"><span class="u3">按卷数是保罗最多，按字数却是路加最多</span>：路加福音加使徒行传，约占新约的 27%。摩西五经的作者是摩西，这是传统和正统的立场，耶稣自己也说“摩西的书”（可 12:26）。约翰写了福音书、三封书信和启示录，共 5 卷。</div>
+<div class="box cf">无论有多少人类作者，<span class="m">真正的作者只有一位</span>。比利时信条第 3 条说，圣经是人“被圣灵感动说出神的话来”。所以全书 66 卷能够<span class="k">彼此一致</span>，而且<span class="k">以基督为中心</span>。</div>
+</section>
+
+<section id="s-pairs" class="reveal" data-grp="二 · 书卷对比">
+<h2>🔗 书卷对照：首与尾</h2>
+<div class="tbl"><table>
+<tr><th>创世记 1–3</th><th>⇄</th><th>启示录 21–22</th></tr>
+<tr><td>起初神创造天地</td><td>🌍</td><td>我又看见一个新天新地</td></tr>
+<tr><td>黑暗、深渊</td><td>🌊</td><td><span class="m">海也不再有了</span>（21:1）</td></tr>
+<tr><td>光（第一日）</td><td>☀️</td><td>不用日月光照，因有神的荣耀（21:23）</td></tr>
+<tr><td>伊甸园中的河</td><td>💧</td><td>生命水的河从宝座流出（22:1）</td></tr>
+<tr><td><span class="hl-r">生命树被看守</span></td><td>🌳</td><td><span class="hl-g">生命树的叶子医治万民</span>（22:2）</td></tr>
+<tr><td>咒诅临到</td><td>⚖️</td><td>以后再没有咒诅（22:3）</td></tr>
+<tr><td>蛇进入园中</td><td>🐍</td><td>古蛇被扔在火湖里（20:10）</td></tr>
+<tr><td>被赶出，不再见神的面</td><td>👁️</td><td>“也要见他的面”（22:4）</td></tr>
+</table></div>
+<div class="box key">整本圣经就是一个<span class="m">伊甸 → 失去 → 恢复并超越</span>的圆环。新天新地<span class="u4">不只是回到伊甸，而是超越伊甸</span>：没有试探，没有死亡，整座城就是至圣所（立方体，21:16）。</div>
+</section>
+
+<section id="s-pairs2" class="reveal">
+<h2>⚖️ 书卷对照：六组</h2>
+<div data-tabs>
+<div class="tabs"><button class="btn on">利未记 ⇄ 希伯来书</button><button class="btn">罗马书 ⇄ 加拉太书</button><button class="btn">罗马书 ⇄ 雅各书</button><button class="btn">以弗所 ⇄ 歌罗西</button><button class="btn">但以理 ⇄ 启示录</button><button class="btn">约伯 ⇄ 传道书</button></div>
+<div class="pane on"><div class="tbl"><table><tr><th></th><th>利未记</th><th>希伯来书</th></tr>
+<tr><td>祭司</td><td>亚伦的后裔，会死</td><td><span class="m">照麦基洗德的等次，永远长存</span>（7）</td></tr>
+<tr><td>祭物</td><td>牛羊，年年重复</td><td>基督自己，<span class="m">只一次</span>（9:12，26；10:10）</td></tr>
+<tr><td>圣所</td><td>地上的帐幕</td><td>天上的真帐幕（8:2）</td></tr>
+<tr><td>赎罪日</td><td>一年一次进至圣所</td><td>“坦然无惧地进入至圣所”（10:19）</td></tr>
+</table></div><div class="box key">利未记是影子，希伯来书是实体（来 10:1）。读希伯来书离不开利未记，读利未记必须看到希伯来书。</div></div>
+<div class="pane"><div class="tbl"><table><tr><th></th><th>罗马书</th><th>加拉太书</th></tr>
+<tr><td>语气</td><td>系统、平和的陈述</td><td><span class="hl-r">紧急的争辩</span>，“无知的加拉太人哪”</td></tr>
+<tr><td>处境</td><td>访问前的自我介绍</td><td>教会已被犹太化分子搅扰</td></tr>
+<tr><td>共同核心</td><td colspan="2"><span class="m">因信称义</span>，两卷都引用创 15:6 和哈 2:4</td></tr>
+</table></div><div class="box mem">加拉太书是“草稿上的呐喊”，罗马书是“定稿的论文”。路德称加拉太书是“我的凯蒂（妻子）”。</div></div>
+<div class="pane"><div class="tbl"><table><tr><th></th><th>保罗（罗 3–4）</th><th>雅各（雅 2）</th></tr>
+<tr><td>对手</td><td>靠行律法称义的律法主义</td><td>只有口头认信的死信心</td></tr>
+<tr><td>“称义”指</td><td>在<span class="u1">神面前</span>被宣告为义</td><td>在<span class="u2">人面前</span>被证明为义</td></tr>
+<tr><td>引亚伯拉罕</td><td>创 15（信，在受割礼以前）</td><td>创 22（献以撒，信心的果子）</td></tr>
+</table></div><div class="box cf">比利时信条第 24 条：善行<span class="m">不能使我们称义</span>，但真信心<span class="m">必然</span>结出善行。海德堡要理问答第 64 问：这教义不会叫人轻忽善行，因为凡与基督联合的人，<span class="k">不可能不结出感恩的果子</span>。</div></div>
+<div class="pane"><div class="tbl"><table><tr><th></th><th>以弗所书</th><th>歌罗西书</th></tr>
+<tr><td>重心</td><td>教会是基督的<span class="m">身体</span></td><td>基督是身体的<span class="m">头</span></td></tr>
+<tr><td>处境</td><td>可能是传阅书信，没有特定异端</td><td>对抗哲学、天使崇拜、禁欲主义</td></tr>
+<tr><td>重叠</td><td colspan="2">约一半内容平行，例如家庭规范（弗 5–6 / 西 3–4）、穿上新人</td></tr>
+</table></div></div>
+<div class="pane"><div class="tbl"><table><tr><th></th><th>但以理书</th><th>启示录</th></tr>
+<tr><td>兽</td><td>四兽 = 四个帝国（7）</td><td>海中的兽综合了四兽的特征（13:2）</td></tr>
+<tr><td>人子</td><td>驾云而来（7:13）</td><td>“有一位好像人子”（1:13）</td></tr>
+<tr><td>书卷</td><td>“封闭这书”（12:4）</td><td>“不可封了这书”（22:10），羔羊揭开七印</td></tr>
+<tr><td>结局</td><td>永远的国（2:44）</td><td>“世上的国成了我主和主基督的国”（11:15）</td></tr>
+</table></div><div class="box key">但以理书的封闭到启示录被打开，<span class="m">打开它的就是被杀的羔羊</span>（启 5）。</div></div>
+<div class="pane"><div class="tbl"><table><tr><th></th><th>约伯记</th><th>传道书</th></tr>
+<tr><td>问题</td><td>义人为何受苦？</td><td>人生在日光之下有何意义？</td></tr>
+<tr><td>错误答案</td><td>三友人：受苦是因为犯罪</td><td>智慧、享乐、劳碌都是虚空</td></tr>
+<tr><td>答案</td><td><span class="m">神亲自显现</span>，而非解释</td><td><span class="m">敬畏神，谨守他的诫命</span>（12:13）</td></tr>
+</table></div><div class="box mem">两卷书都把“为什么”交还给神：<span class="hl-b">约伯在苦难中</span>，<span class="hl-g">传道者在顺境中</span>。</div></div>
+</div>
+</section>
+
+<section id="s-themes" class="reveal" data-grp="三 · 主题">
+<h2>🧵 五条主线贯穿哪些书卷</h2>
+<div class="tbl"><table>
+<tr><th>主线</th><th>起点</th><th>发展</th><th>高峰</th><th>完成</th></tr>
+<tr><td>🏛️ 圣殿</td><td>伊甸（创 2）</td><td>会幕（出 25–40）→ 圣殿（王上 6）→ 荣耀离开（结 10）</td><td>“拆毁这殿，三日内我要再建立起来”（约 2:19）</td><td>城就是至圣所（启 21）</td></tr>
+<tr><td>👑 国度</td><td>治理全地（创 1:28）</td><td>以色列 → 大卫之约（撒下 7）</td><td>“天国近了”（太 4:17）</td><td>“他要作王，直到永永远远”（启 11:15）</td></tr>
+<tr><td>🐑 祭物</td><td>皮衣（创 3:21）</td><td>以撒（创 22）→ 逾越节（出 12）→ 利未记</td><td>“神的羔羊”（约 1:29）</td><td>羔羊的婚筵（启 19）</td></tr>
+<tr><td>🏞️ 地</td><td>伊甸</td><td>迦南（书）→ 被掳 → 归回</td><td>“温柔的人必承受地土”（太 5:5）</td><td>新天新地（启 21）</td></tr>
+<tr><td>👤 后裔</td><td>女人的后裔（创 3:15）</td><td>亚伯拉罕 → 犹大（创 49:10）→ 大卫</td><td>“那一个后裔就是基督”（加 3:16）</td><td>“大卫的根，又是他的后裔”（启 22:16）</td></tr>
+</table></div>
+<div class="box mem">每条主线都是<span class="m">“创世记开始 → 基督成全 → 启示录完成”</span>三步。这就是圣经神学的“救赎历史”读法。</div>
+</section>
+
+<footer>CCstudy · 📊 统计与书卷对比 v2.2.0 · 2026-10-22</footer>
+</main></div>
+<div class="fab"><button class="btn" id="upBtn" title="回到顶部">↑</button></div>
+<script src="assets/stats.js"></script>
+<script src="assets/lenis.min.js"></script>
+<script src="assets/app.js"></script>
+</body></html>

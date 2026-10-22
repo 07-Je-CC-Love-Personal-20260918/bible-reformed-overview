@@ -150,3 +150,32 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .sky i{filter:none!important;background:radial-gradient(circle at 50% 50%,var(--c) 0%,transparent 68%)!important;opacity:.45}
 .sky i:nth-child(1){--c:var(--acc)}.sky i:nth-child(2){--c:var(--acc2)}.sky i:nth-child(3){--c:var(--acc3)}
 [data-theme="night"] .sky i{opacity:.28}
+/* 全站页面导航 */
+.pagenav{position:sticky;top:48px;z-index:49;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:6px 12px;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.pagenav::-webkit-scrollbar{display:none}
+.pagenav a{flex:none;padding:4px 12px;border-radius:999px;text-decoration:none;color:var(--sub);font-size:.86rem;font-weight:600;transition:background .2s,color .2s}
+.pagenav a:hover{background:var(--hl);color:var(--ink)}
+.pagenav a.on{background:var(--acc);color:#fff}
+nav.toc{top:86px;height:calc(100vh - 86px)}
+section{scroll-margin-top:100px}
+.ev.life{cursor:pointer;transition:transform .25s,box-shadow .25s}
+.ev.life.on{transform:translateX(6px);box-shadow:0 6px 20px rgba(0,0,0,.12);background:var(--hl)}
+.phases{display:flex;height:30px;border-radius:10px;overflow:hidden;margin:8px 0}
+.phases div{display:flex;align-items:center;justify-content:center;color:#fff;font-size:.72rem;font-weight:700;white-space:nowrap;overflow:hidden;padding:0 3px}
+#lifeProgWrap{height:6px;border-radius:6px;background:var(--line);overflow:hidden}#lifeProg{height:100%;background:linear-gradient(90deg,var(--acc),var(--red));transform-origin:0 0;transition:transform .6s}
+.lifegrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:14px;align-items:start}
+.lifegrid .mapcol{position:sticky;top:110px}
+#lifeMap{height:min(60vh,460px);border-radius:16px;border:1px solid var(--line)}
+#lifeList{max-height:70vh;overflow:auto;padding-right:4px}
+@media(max-width:860px){.lifegrid{grid-template-columns:1fr}.lifegrid .mapcol{position:static}#lifeList{max-height:none}}
+.ck{color:#3fa55b;font-weight:900}.no{color:var(--line)}
+.bars .row{display:grid;grid-template-columns:5.5em 1fr 3.5em;gap:8px;align-items:center;margin:4px 0;font-size:.88rem}
+.bars .bar{height:16px;border-radius:8px;background:linear-gradient(90deg,var(--acc),var(--acc2));transform-origin:0 0;transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.in .bars .bar,.bars.in .bar{transform:scaleX(var(--v))}
+.kp{text-align:center}.kv{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.chartbox .sb rect{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .7s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
+.chartbox.in .sb rect{transform:scaleY(1)}
+.chartbox .sb:hover rect{filter:brightness(1.15)}
+#donut svg{min-width:0;max-width:300px;flex:none}
+.donutwrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center}
+.dleg{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:6px 16px}

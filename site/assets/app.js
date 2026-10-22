@@ -11,6 +11,18 @@
   document.querySelectorAll('.sw').forEach(s=>s.addEventListener('click',()=>theme(s.dataset.t)));
   apply(get('cc-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'night':'dawn'));
 
+
+  // ---- 全站页面导航（统一注入）----
+  const PAGES=[['index.html','📖 全景'],['books.html','📚 66卷'],['gospels.html','✝️ 四福音'],['kings.html','👑 列王与历代'],['stats.html','📊 统计对比'],['creeds.html','📜 信经'],['classic.html','🏛️ 经典版']];
+  const here=(location.pathname.split('/').pop()||'index.html');
+  const top=document.querySelector('header.top');
+  if(top&&!document.querySelector('.pagenav')){const pn=document.createElement('nav');pn.className='pagenav';pn.setAttribute('aria-label','页面');
+    pn.innerHTML=PAGES.map(([h,t])=>`<a href="${h}"${h===here?' class="on" aria-current="page"':''}>${t}</a>`).join('');top.after(pn);
+    top.querySelectorAll('a.btn[href$=".html"]').forEach(a=>a.remove())}
+  // ---- 自动目录 ----
+  const at=document.querySelector('nav.toc[data-auto]');
+  if(at){let h='';document.querySelectorAll('main section[id]').forEach(s=>{const t=s.querySelector('h2');if(!t)return;if(s.dataset.grp)h+=`<div class="grp">${s.dataset.grp}</div>`;h+=`<a href="#${s.id}">${t.childNodes[0].textContent.trim()}</a>`});at.innerHTML=h}
+
   // ---- 惯性平滑滚动 ----
   let lenis=null;
   if(window.Lenis&&!reduce){
