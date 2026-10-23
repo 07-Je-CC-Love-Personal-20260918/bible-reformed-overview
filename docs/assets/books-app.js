@@ -2,6 +2,7 @@
 (function(){
 const B=window.BOOKS,R=window.REL||{};
 const CH=[50,40,27,36,34,24,21,4,31,24,22,25,29,36,10,13,10,42,150,31,12,8,66,52,5,48,12,14,3,9,1,4,7,3,3,3,2,14,4,28,16,24,21,28,16,16,13,6,6,4,4,5,3,6,4,3,1,13,5,5,3,5,1,1,1,22];
+const AB=['创','出','利','民','申','书','士','得','撒上','撒下','王上','王下','代上','代下','拉','尼','斯','伯','诗','箴','传','歌','赛','耶','哀','结','但','何','珥','摩','俄','拿','弥','鸿','哈','番','该','亚','玛','太','可','路','约','徒','罗','林前','林后','加','弗','腓','西','帖前','帖后','提前','提后','多','门','来','雅','彼前','彼后','约一','约二','约三','犹','启'];
 const G=['律法','历史','诗歌','大先知','小先知','福音书','保罗书信','普通书信','预言'];
 const C={律法:'#b5562b',历史:'#2f6f8f',诗歌:'#5f8a2e',大先知:'#c93c3c',小先知:'#b8860b',福音书:'#d4a017',保罗书信:'#6b3fb5',普通书信:'#c2185b',预言:'#334155'};
 const IC={律法:'📜',历史:'🏰',诗歌:'🎵',大先知:'🔥',小先知:'📢',福音书:'✝️',保罗书信:'✉️',普通书信:'📨',预言:'🌅'};
@@ -9,7 +10,7 @@ const byId={};B.forEach((b,i)=>{b.i=i;b.ch=CH[i];byId[b.id]=b});
 const $=id=>document.getElementById(id);
 const strip=s=>s.replace(/<[^>]+>/g,'');
 // ---------- 书架 ----------
-if($('shelf')){$('shelf').innerHTML=B.map(b=>`<a class="spine" href="#${b.id}" title="${b.n} · ${b.ch} 章" style="--h:${Math.max(28,Math.sqrt(b.ch)*13)}px;--c:${C[b.g]};--d:${b.i*14}ms"><span>${b.n.replace(/(记|书|福音|纪|篇|言|歌)$/,'')}</span></a>`).join('')}
+if($('shelf')){$('shelf').innerHTML=B.map(b=>`<a class="spine" href="#${b.id}" title="${b.n} · ${b.ch} 章" style="--h:${Math.round(44+Math.sqrt(b.ch)*10)}px;--c:${C[b.g]};--d:${b.i*12}ms"><span>${AB[b.i]}</span></a>`).join('')}
 // ---------- 分组目录与卡片 ----------
 const groups=[];B.forEach(b=>{const key=(b.i<39?'旧约 · ':'新约 · ')+b.g;let g=groups.find(x=>x.key===key);if(!g){g={key,g:b.g,items:[]};groups.push(g)}g.items.push(b)});
 let toc='',list='';
@@ -23,7 +24,7 @@ groups.forEach(gr=>{toc+=`<div class="grp">${IC[gr.g]} ${gr.key}（${gr.items.le
   list+=`<details class="book bk" id="${b.id}" data-g="${b.g}" data-s="${strip(b.n+b.k+b.core+b.why+b.mem+b.cx+kv+(X.bg||''))}" style="--c:${C[b.g]}">
 <summary><span class="bno">${b.i+1}</span><span class="bn">${b.n}</span><span class="tag">${b.k}</span><span class="meta">✍️ ${b.a} · 🕰️ ${b.t} · 📖 ${b.ch} 章</span></summary>
 <div class="bkbody">
-<div class="poswrap" title="在 66 卷中的位置"><div class="posbar"><i style="left:${pos}%"></i></div><small>旧约 39</small><small style="left:59%">新约 27</small></div>
+<div class="poswrap" title="在 66 卷中的位置"><div class="posbar"><i style="left:${pos}%"></i></div></div>
 <dl>
 <dt>🔑 钥节</dt><dd class="kvs">${kv.split('；').map(s=>{const m=s.match(/^(.*?)（(.*)）$/);return m?`<span class="kvi"><b class="d">${m[1]}</b><em>${m[2]}</em></span>`:`<span class="kvi"><b class="d">${s}</b></span>`}).join('')}</dd>
 ${X.bg?`<dt>🏺 写作背景</dt><dd>${X.bg}</dd>`:''}
@@ -38,12 +39,11 @@ ${kc?`<dt>📍 重点章节</dt><dd><div class="kcs">${kc}</div></dd>`:''}
 <dt>🧠 口诀</dt><dd><span class="m">${b.mem}</span></dd>
 ${rel?`<dt>🔗 关联书卷</dt><dd><div class="rels">${rel}</div></dd>`:''}
 </dl>
-<div class="bknav">${b.i>0?`<a class="btn" href="#${B[b.i-1].id}">← ${B[b.i-1].n}</a>`:'<span></span>'}${b.i<65?`<a class="btn" href="#${B[b.i+1].id}">${B[b.i+1].n} →</a>`:''}</div>
 </div></details>`});
  list+='</section>'});
 $('toc').innerHTML=toc;$('list').innerHTML=list;
 // 结构文本：把“｜”切成彩色段
-document.querySelectorAll('.stx').forEach(d=>{const parts=d.innerHTML.split('｜');if(parts.length>1)d.innerHTML='<div class="segs">'+parts.map((p,i)=>`<span style="--k:${i}">${p}</span>`).join('')+'</div>'});
+document.querySelectorAll('.stx').forEach(d=>{const parts=[];let depth=0,buf='';for(const ch of d.innerHTML){if('（('.includes(ch))depth++;if('）)'.includes(ch))depth--;if(ch==='｜'&&depth<=0){parts.push(buf);buf=''}else buf+=ch}parts.push(buf);if(parts.length>1)d.innerHTML='<div class="segs">'+parts.map((p,i)=>`<span style="--k:${i}">${p}</span>`).join('')+'</div>'});
 // ---------- 分布条 ----------
 $('gbar').innerHTML=groups.map(gr=>`<a href="#g-${gr.items[0].id}" title="${gr.key}" data-n="${gr.items.length}" style="flex:${gr.items.length};background:${C[gr.g]}">${(gr.items.length===1?gr.items[0].n:gr.g)+' '+gr.items.length}</a>`).join('');
 // ---------- 筛选 ----------
@@ -66,12 +66,12 @@ addEventListener('hashchange',openHash);addEventListener('load',openHash);
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const d=document.getElementById(a.getAttribute('href').slice(1));if(d&&d.tagName==='DETAILS'){d.open=true;d.classList.remove('flashhi');void d.offsetWidth;d.classList.add('flashhi')}},true);
 // ---------- 关联网络图 ----------
 const net=$('net');
-if(net){const W=760,cx=W/2,cy=W/2,r=W/2-70;const pt=i=>{const a=-Math.PI/2+i/66*Math.PI*2;return[cx+r*Math.cos(a),cy+r*Math.sin(a),a]};
+if(net){const W=760,cx=W/2,cy=W/2,r=W/2-44;const pt=i=>{const a=-Math.PI/2+i/66*Math.PI*2;return[cx+r*Math.cos(a),cy+r*Math.sin(a),a]};
  let edges='',nodes='',seen=new Set();
  B.forEach(b=>(R[b.id]||[]).forEach(([t])=>{const o=byId[t];if(!o)return;const k=[b.id,t].sort().join('-');if(seen.has(k))return;seen.add(k);const[x1,y1]=pt(b.i),[x2,y2]=pt(o.i);
   edges+=`<path class="e" data-a="${b.id}" data-b="${t}" d="M${x1} ${y1}Q${cx} ${cy} ${x2} ${y2}" stroke="${C[b.g]}"/>`}));
  B.forEach(b=>{const[x,y,a]=pt(b.i),lx=cx+(r+16)*Math.cos(a),ly=cy+(r+16)*Math.sin(a),deg=a*180/Math.PI,flip=Math.cos(a)<0;
-  nodes+=`<g class="n" data-id="${b.id}"><circle cx="${x}" cy="${y}" r="${3+Math.sqrt(b.ch)/2.2}" fill="${C[b.g]}"/><text x="${lx}" y="${ly}" font-size="11" text-anchor="${flip?'end':'start'}" dominant-baseline="middle" transform="rotate(${flip?deg+180:deg} ${lx} ${ly})">${b.n.replace(/(记|书|福音|纪|篇|言|歌)$/,'')}</text></g>`});
+  nodes+=`<g class="n" data-id="${b.id}"><circle cx="${x}" cy="${y}" r="${3+Math.sqrt(b.ch)/2.2}" fill="${C[b.g]}"/><text x="${lx}" y="${ly}" font-size="12" font-weight="700" text-anchor="${flip?'end':'start'}" dominant-baseline="middle" transform="rotate(${flip?deg+180:deg} ${lx} ${ly})"><title>${b.n}</title>${AB[b.i]}</text></g>`});
  net.innerHTML=`<svg viewBox="0 0 ${W} ${W}" role="img" aria-label="书卷关联网络">${edges}${nodes}</svg>`;
  const info=$('netInfo');
  const hi=id=>{net.classList.toggle('focus',!!id);net.querySelectorAll('.e').forEach(e=>e.classList.toggle('on',e.dataset.a===id||e.dataset.b===id));

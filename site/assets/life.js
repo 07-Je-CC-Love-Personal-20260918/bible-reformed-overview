@@ -34,7 +34,7 @@ const list=document.getElementById('lifeList'),mapEl=document.getElementById('li
 list.innerHTML=E.map((e,i)=>`<div class="ev life" data-i="${i}" style="border-left:4px solid ${PH[e[1]]}"><span class="d">${e[0]}</span> <span class="pill" style="background:${PH[e[1]]}">${e[1]}</span> <b>${e[2]}</b> · 📍${e[3]} <small style="color:var(--sub)">（${e[6]}）</small><div style="font-size:.9rem">${e[7]}</div></div>`).join('');
 // 阶段条
 const bar=document.getElementById('lifePhases');
-if(bar){const seen=[];E.forEach(e=>{if(!seen.includes(e[1]))seen.push(e[1])});bar.innerHTML=seen.map(p=>`<div style="flex:${E.filter(e=>e[1]===p).length};background:${PH[p]}" title="${p}">${p}</div>`).join('')}
+if(bar){const seen=[];E.forEach(e=>{if(!seen.includes(e[1]))seen.push(e[1])});const SH={'早期犹太事工':'早期','加利利大事工':'加利利','退修与训练':'训练','后期犹太与比利亚事工':'往京','受难周':'受难周','复活':'复活','升天':'升天','预备':'预备','开始':'开始'};bar.innerHTML=seen.map(p=>`<div style="flex:${E.filter(e=>e[1]===p).length};background:${PH[p]}" title="${p}">${SH[p]||p}</div>`).join('')}
 let map=null,mk=null,line=null;
 const concept=window.CCConcept&&CCConcept(document.getElementById('lifeConcept'),{id:'life',bounds:[31.0,33.55,34.55,36.05],w:900,
  points:[...new Map(E.map(e=>[e[3],e])).values()].map(e=>({n:e[3].split('·')[0].replace('（传统说他泊山）',''),lat:e[4],lng:e[5],c:PH[e[1]],big:['耶路撒冷','伯利恒','拿撒勒','迦百农'].includes(e[3]),left:['耶路撒冷','各各他','园中的坟墓','客西马尼','橄榄山','以马忤斯','犹太旷野','伯大尼','橄榄山·伯大尼'].includes(e[3])})).filter(p=>!['各各他','园中的坟墓','客西马尼','橄榄山'].includes(p.n)),

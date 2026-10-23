@@ -47,12 +47,21 @@ window.CCConcept=function(el,o){if(!el)return null;const b=o.bounds.slice();cons
  for(let lat=Math.ceil(b[0]);lat<=b[1];lat+=(b[1]-b[0]>8?5:1))s+=`<line x1="0" x2="${W}" y1="${Y(lat)}" y2="${Y(lat)}" stroke="var(--line)" stroke-dasharray="2 6"/>`;
  COAST.forEach(c=>{if(c.some(([a,l])=>inb(a,l)))s+=`<polyline points="${P(c)}" fill="none" stroke="var(--acc2)" stroke-width="2.4" stroke-opacity=".55" stroke-linejoin="round" stroke-linecap="round"/>`});
  LAKES.forEach(c=>{if(c.some(([a,l])=>inb(a,l)))s+=`<polygon points="${P(c)}" fill="var(--acc2)" fill-opacity=".25" stroke="var(--acc2)" stroke-opacity=".5"/>`});
- Object.entries(RIVER).forEach(([n,c])=>{if(c.some(([a,l])=>inb(a,l))){s+=`<polyline points="${P(c)}" fill="none" stroke="#3b82c4" stroke-width="2" stroke-opacity=".7" stroke-linecap="round"/>`;const m=c[Math.floor(c.length/2)];if(inb(m[0],m[1]))s+=`<text x="${X(m[1])+6}" y="${Y(m[0])}" font-size="11" fill="#3b82c4" font-style="italic">${n}</text>`}});
- REG.forEach(([n,a,l,sea])=>{if(n==='迦 南'&&b[1]-b[0]<5)return;if(['加利利','犹 太','撒玛利亚','加利利海','盐 海'].includes(n)&&b[1]-b[0]>8)return;if(a>b[0]&&a<b[1]&&l>b[2]&&l<b[3])s+=`<text x="${X(l)}" y="${Y(a)}" text-anchor="middle" font-size="${sea?14:15}" font-weight="800" fill="${sea?'#3b82c4':'var(--sub)'}" fill-opacity="${sea?.55:.45}" letter-spacing="2">${n}</text>`});
+ Object.entries(RIVER).forEach(([n,c])=>{if(c.some(([a,l])=>inb(a,l))){s+=`<polyline points="${P(c)}" fill="none" stroke="#3b82c4" stroke-width="2" stroke-opacity=".7" stroke-linecap="round"/>`}});
  // 路线
  (o.routes||[]).forEach((r,i)=>{s+=`<polyline class="croute" data-i="${i}" points="${P(r.pts)}" fill="none" stroke="${r.c}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" ${r.dash?'stroke-dasharray="7 6"':''}/>`});
- // 地点
- (o.points||[]).forEach(p=>{if(!inb(p.lat,p.lng))return;s+=`<g class="cpt" data-g="${p.g||''}"><circle cx="${X(p.lng)}" cy="${Y(p.lat)}" r="${p.big?7:5}" fill="${p.c||'var(--acc)'}" stroke="#fff" stroke-width="1.6"><title>${p.n}${p.d?'：'+p.d.replace(/<[^>]+>/g,''):''}</title></circle><text x="${X(p.lng)+(p.left?-8:8)}" y="${Y(p.lat)+4}" font-size="${p.big?13:11.5}" font-weight="${p.big?800:600}" text-anchor="${p.left?'end':'start'}" paint-order="stroke" stroke="var(--bg)" stroke-width="3">${p.n}</text></g>`});
+ // 地点（标签自动避让，放不下就只留圆点，悬停看名字）
+ const boxes=[],hit=(x1,y1,x2,y2)=>boxes.some(q=>x1<q[2]&&x2>q[0]&&y1<q[3]&&y2>q[1]);
+ const pts=(o.points||[]).filter(p=>inb(p.lat,p.lng)).sort((p,q)=>(q.big?1:0)-(p.big?1:0));
+ pts.forEach(p=>{const x=X(p.lng),y=Y(p.lat);boxes.push([x-6,y-6,x+6,y+6])});
+ pts.forEach(p=>{const x=X(p.lng),y=Y(p.lat),fs=p.big?13:11.5,w=p.n.length*fs*1.02,h=fs*1.2;
+  const cand=[[x+8,y+4,'start'],[x-8,y+4,'end'],[x+8,y-8,'start'],[x+8,y+16,'start'],[x-8,y-8,'end'],[x-8,y+16,'end']];
+  if(p.left)cand.unshift(cand.splice(1,1)[0]);
+  let lab='';for(const[tx,ty,an]of cand){const x1=an==='end'?tx-w:tx,y1=ty-fs;if(!hit(x1,y1,x1+w,y1+h)&&x1>2&&x1+w<W-2){boxes.push([x1,y1,x1+w,y1+h]);lab=`<text x="${tx}" y="${ty}" font-size="${fs}" font-weight="${p.big?800:600}" text-anchor="${an}" paint-order="stroke" stroke="var(--bg)" stroke-width="3">${p.n}</text>`;break}}
+  s+=`<g class="cpt" data-g="${p.g||''}"><circle cx="${x}" cy="${y}" r="${p.big?7:5}" fill="${p.c||'var(--acc)'}" stroke="#fff" stroke-width="1.6"><title>${p.n}${p.d?'：'+p.d.replace(/<[^>]+>/g,''):''}</title></circle>${lab}</g>`});
+ // 河名与地区名：最后放，碰到就不画
+ Object.entries(RIVER).forEach(([n,c])=>{const m=c[Math.floor(c.length/2)];if(!inb(m[0],m[1]))return;const x1=X(m[1])+6,y1=Y(m[0])-11,w=n.length*11;if(hit(x1,y1,x1+w,y1+13))return;boxes.push([x1,y1,x1+w,y1+13]);s+=`<text x="${x1}" y="${Y(m[0])}" font-size="11" fill="#3b82c4" font-style="italic">${n}</text>`});
+ REG.forEach(([n,a,l,sea])=>{if((o.points||[]).some(p=>p.n===n.replace(/ /g,'')))return;if(n==='迦 南'&&b[1]-b[0]<5)return;if(['加利利','犹 太','撒玛利亚','加利利海','盐 海'].includes(n)&&b[1]-b[0]>8)return;if(!(a>b[0]&&a<b[1]&&l>b[2]&&l<b[3]))return;const fs=sea?14:15,w=n.length*fs*1.15,x1=X(l)-w/2,y1=Y(a)-fs;if(hit(x1,y1,x1+w,y1+fs*1.25))return;boxes.push([x1,y1,x1+w,y1+fs*1.25]);s+=`<text x="${X(l)}" y="${Y(a)}" text-anchor="middle" font-size="${fs}" font-weight="800" fill="${sea?'#3b82c4':'var(--sub)'}" fill-opacity="${sea?.55:.45}" letter-spacing="2">${n}</text>`});
  s+=`<g class="cmk" style="display:none"><circle r="14" fill="var(--red)" opacity=".25"><animate attributeName="r" values="8;18;8" dur="1.6s" repeatCount="indefinite"/></circle><circle r="7" fill="var(--red)" stroke="#fff" stroke-width="2"/></g>`;
  s+=`<text x="${W-8}" y="${H-8}" text-anchor="end" font-size="10" fill="var(--sub)">示意图 · 比例与海岸线为概略</text></svg>`;
  el.innerHTML=s;const svg=el.querySelector('svg');

@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-      SURGE_DOMAIN: bible-reformed-20261023-v2-5-0-ccstudy.surge.sh
+      SURGE_DOMAIN: bible-reformed-20261023-v2-6-0-ccstudy.surge.sh
     steps:
       - uses: actions/checkout@v4
       - name: Build classic single-file page and sync site/ -> docs/ (GitHub Pages)

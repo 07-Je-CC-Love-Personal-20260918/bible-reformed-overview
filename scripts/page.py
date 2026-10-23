@@ -24,7 +24,7 @@ html=f'''<!doctype html>
 <nav class="toc" data-auto></nav>
 <main>
 {body}
-<footer>CCstudy · {title} v2.5.0 · 2026-10-23</footer>
+<footer>CCstudy · {title} v2.6.0 · 2026-10-23</footer>
 </main></div>
 <div class="fab"><button class="btn" id="upBtn" title="回到顶部">↑</button></div>
 {scripts}<script src="assets/lenis.min.js"></script>
