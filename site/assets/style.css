@@ -88,7 +88,7 @@ svg text{fill:var(--ink);font-family:inherit}
 .mindmap .n{padding:8px 14px;border-radius:14px;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.12)}
 .hide-ans .ans{filter:blur(6px);cursor:pointer;transition:filter .3s}
 .hide-ans .ans:hover{filter:none}
-#map{height:min(70vh,520px);border-radius:18px;border:1px solid var(--line);z-index:1}
+#realMap{z-index:1}
 footer{text-align:center;color:var(--sub);font-size:.85rem;padding:30px 10px}
 .btn{white-space:nowrap;text-decoration:none}
 @media(max-width:600px){.top{gap:6px;padding:8px 10px}.top h1{display:none}.top .themes{margin-left:auto;gap:5px}.top .btn{padding:4px 9px;font-size:.8rem}.sw{width:18px;height:18px}
@@ -239,3 +239,36 @@ details.bk[open] .bkbody{animation:pop .35s}
 @media(max-width:600px){.gbar>a{font-size:0!important}.gbar>a::after{content:attr(data-n);font-size:.75rem}}
 .filters{position:static!important;background:none!important}
 details.bk{content-visibility:visible!important}
+/* v2.5 分布条：手机也显示文字 */
+@media(max-width:700px){.gbar{flex-wrap:wrap;height:auto!important;gap:3px;border-radius:12px;overflow:visible}
+.gbar>a,.gbar>div{flex:1 1 calc(33% - 3px)!important;height:30px;border-radius:8px;font-size:.74rem!important}
+.gbar>a::after,.gbar>div::after{content:none!important}}
+/* v2.5 逐卷卡片：紧凑精致 */
+.bk dl{grid-template-columns:7.2em 1fr;gap:0;margin-top:8px;border-top:1px solid var(--line)}
+.bk dt,.bk dd{padding:9px 0;border-bottom:1px solid var(--line)}
+.bk dt{display:flex;align-items:flex-start;gap:4px;font-size:.86rem;padding-right:8px}
+.bk dd{line-height:1.75}
+@media(max-width:560px){.bk dl{grid-template-columns:1fr}.bk dt{border-bottom:none;padding-bottom:0}}
+.kvs{display:flex;flex-wrap:wrap;gap:6px}
+.kvi{display:inline-flex;align-items:baseline;gap:6px;padding:2px 10px;border-radius:10px;background:color-mix(in srgb,var(--c) 10%,transparent);border:1px solid color-mix(in srgb,var(--c) 28%,transparent)}
+.kvi em{font-style:normal;font-size:.86rem;color:var(--ink)}
+.kvi em::before{content:"（"}.kvi em::after{content:"）"}
+.kcs{display:flex;flex-wrap:wrap;gap:6px}
+.kc{display:inline-flex;gap:6px;align-items:center;padding:3px 10px 3px 3px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.86rem}
+.kc b{display:inline-grid;place-items:center;min-width:2.4em;height:1.7em;padding:0 6px;border-radius:999px;background:var(--c);color:#fff;font-size:.78rem}
+/* 地图 */
+.mapcard{padding:10px 12px}
+.concept{display:block;width:100%;height:auto;background:linear-gradient(160deg,color-mix(in srgb,var(--bg2) 70%,transparent),transparent);border-radius:12px}
+.concept .cpt{cursor:default}.concept .cpt:hover circle{r:8}
+.realmap{height:min(58vh,440px);border-radius:14px;border:1px solid var(--line);margin-top:8px}
+.realmap.nomap{height:auto;min-height:80px}
+.mapbadge{background:var(--card);backdrop-filter:blur(8px);padding:3px 10px;border-radius:999px;font-size:12px;cursor:pointer;border:1px solid var(--line);color:var(--ink)}
+#map.reveal{content-visibility:visible}
+/* 悬浮导航 */
+.fnav{position:fixed;right:12px;bottom:14px;z-index:60;display:flex;flex-direction:column;gap:4px;padding:5px;border-radius:16px;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.12);opacity:.55;transition:opacity .3s,transform .3s}
+.fnav:hover,.fnav:focus-within{opacity:1}
+.fnav.dim{opacity:.25}
+.fnav button{width:34px;height:34px;border:none;border-radius:10px;background:transparent;color:var(--ink);font-size:16px;cursor:pointer;transition:background .2s,transform .2s;font-family:inherit}
+.fnav button:hover{background:var(--hl);transform:scale(1.08)}
+.fnav.min button:not(.fold){display:none}
+.fnav.min{opacity:.6}

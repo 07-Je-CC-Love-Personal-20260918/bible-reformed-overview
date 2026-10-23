@@ -36,15 +36,18 @@ list.innerHTML=E.map((e,i)=>`<div class="ev life" data-i="${i}" style="border-le
 const bar=document.getElementById('lifePhases');
 if(bar){const seen=[];E.forEach(e=>{if(!seen.includes(e[1]))seen.push(e[1])});bar.innerHTML=seen.map(p=>`<div style="flex:${E.filter(e=>e[1]===p).length};background:${PH[p]}" title="${p}">${p}</div>`).join('')}
 let map=null,mk=null,line=null;
-if(window.L&&mapEl){map=L.map(mapEl,{scrollWheelZoom:false}).setView([32.3,35.4],8);
- L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,attribution:'© OpenStreetMap'}).addTo(map);
- E.forEach(e=>L.circleMarker([e[4],e[5]],{radius:5,color:'#fff',weight:1.5,fillColor:PH[e[1]],fillOpacity:.9}).bindTooltip(e[3]).addTo(map));
- line=L.polyline([],{color:'#c93c3c',weight:3,dashArray:'6 6'}).addTo(map);
- mk=L.marker([E[0][4],E[0][5]]).addTo(map)}
+const concept=window.CCConcept&&CCConcept(document.getElementById('lifeConcept'),{id:'life',bounds:[31.0,33.55,34.55,36.05],w:900,
+ points:[...new Map(E.map(e=>[e[3],e])).values()].map(e=>({n:e[3].split('·')[0].replace('（传统说他泊山）',''),lat:e[4],lng:e[5],c:PH[e[1]],big:['耶路撒冷','伯利恒','拿撒勒','迦百农'].includes(e[3]),left:['耶路撒冷','各各他','园中的坟墓','客西马尼','橄榄山','以马忤斯','犹太旷野','伯大尼','橄榄山·伯大尼'].includes(e[3])})).filter(p=>!['各各他','园中的坟墓','客西马尼','橄榄山'].includes(p.n)),
+ routes:[{c:'#c93c3c',pts:E.map(e=>[e[4],e[5]]),dash:1}]});
+if(concept)concept.show(-1,false);
+map=window.CCMap&&CCMap(mapEl,{center:[32.3,35.4],zoom:8});
+if(map){E.forEach(e=>L.circleMarker([e[4],e[5]],{radius:5,color:'#fff',weight:1.5,fillColor:PH[e[1]],fillOpacity:.9}).bindTooltip(e[3]).addTo(map));
+ line=L.polyline([],{color:'#c93c3c',weight:3,dashArray:'6 6'}).addTo(map);mk=L.marker([E[0][4],E[0][5]]).addTo(map)}
 let cur=-1,timer=null;
 function show(i){cur=i;document.querySelectorAll('.life').forEach(d=>d.classList.toggle('on',+d.dataset.i===i));
  const e=E[i];document.getElementById('lifeNow').innerHTML=`<span class="d">${e[0]}</span> · <b>${e[2]}</b> · 📍${e[3]}<br>${e[7]}`;
  document.getElementById('lifeProg').style.transform=`scaleX(${(i+1)/E.length})`;
+ if(concept)concept.mark(e[4],e[5]);
  if(map){mk.setLatLng([e[4],e[5]]);line.setLatLngs(E.slice(0,i+1).map(x=>[x[4],x[5]]));map.panTo([e[4],e[5]],{animate:true,duration:.8})}}
 list.addEventListener('click',ev=>{const d=ev.target.closest('.life');if(d){stop();show(+d.dataset.i)}});
 const btn=document.getElementById('lifePlay');

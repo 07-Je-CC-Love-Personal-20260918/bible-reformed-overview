@@ -18,24 +18,26 @@ groups.forEach(gr=>{toc+=`<div class="grp">${IC[gr.g]} ${gr.key}（${gr.items.le
  gr.items.forEach(b=>{toc+=`<a href="#${b.id}">${b.n}</a>`;
   const rel=(R[b.id]||[]).map(([t,why])=>byId[t]?`<a class="relchip" href="#${t}" style="--c:${C[byId[t].g]}"><b>${byId[t].n}</b><small>${why}</small></a>`:'').join('');
   const pos=(b.i+.5)/66*100;
-  list+=`<details class="book bk" id="${b.id}" data-g="${b.g}" data-s="${strip(b.n+b.k+b.core+b.why+b.mem+b.cx+b.v)}" style="--c:${C[b.g]}">
+  const X=(window.BX||{})[b.id]||{};const kv=X.v||b.v;
+  const kc=(X.kc||[]).map(([c,t])=>`<span class="kc"><b>${c}</b>${t}</span>`).join('');
+  list+=`<details class="book bk" id="${b.id}" data-g="${b.g}" data-s="${strip(b.n+b.k+b.core+b.why+b.mem+b.cx+kv+(X.bg||''))}" style="--c:${C[b.g]}">
 <summary><span class="bno">${b.i+1}</span><span class="bn">${b.n}</span><span class="tag">${b.k}</span><span class="meta">✍️ ${b.a} · 🕰️ ${b.t} · 📖 ${b.ch} 章</span></summary>
 <div class="bkbody">
-<div class="poswrap" title="在 66 卷中的位置"><div class="posbar"><i style="left:${pos}%"></i></div><small>旧约</small><small style="left:59%">新约</small></div>
-<div class="grid bk2">
-<div class="card mini"><div class="mt">🔑 钥节</div><div class="d">${b.v}</div></div>
-<div class="card mini"><div class="mt">🧠 口诀</div><span class="m">${b.mem}</span></div>
-</div>
-<div class="box key" style="margin-top:10px">${b.core}</div>
+<div class="poswrap" title="在 66 卷中的位置"><div class="posbar"><i style="left:${pos}%"></i></div><small>旧约 39</small><small style="left:59%">新约 27</small></div>
 <dl>
+<dt>🔑 钥节</dt><dd class="kvs">${kv.split('；').map(s=>{const m=s.match(/^(.*?)（(.*)）$/);return m?`<span class="kvi"><b class="d">${m[1]}</b><em>${m[2]}</em></span>`:`<span class="kvi"><b class="d">${s}</b></span>`}).join('')}</dd>
+${X.bg?`<dt>🏺 写作背景</dt><dd>${X.bg}</dd>`:''}
 <dt>❓ 为什么写</dt><dd>${b.why}</dd>
 <dt>🗂️ 结构</dt><dd class="stx">${b.st}</dd>
+${kc?`<dt>📍 重点章节</dt><dd><div class="kcs">${kc}</div></dd>`:''}
+<dt>🎯 核心</dt><dd><div class="box key" style="margin:0">${b.core}</div></dd>
 <dt>✝️ 指向基督</dt><dd>${b.cx}</dd>
 <dt>⚠️ 难点</dt><dd>${b.hard}</dd>
 <dt>📜 信条</dt><dd>${b.cf}</dd>
 <dt>🌱 应用</dt><dd>${b.app}</dd>
+<dt>🧠 口诀</dt><dd><span class="m">${b.mem}</span></dd>
+${rel?`<dt>🔗 关联书卷</dt><dd><div class="rels">${rel}</div></dd>`:''}
 </dl>
-${rel?`<div class="mt" style="margin-top:12px">🔗 关联书卷</div><div class="rels">${rel}</div>`:''}
 <div class="bknav">${b.i>0?`<a class="btn" href="#${B[b.i-1].id}">← ${B[b.i-1].n}</a>`:'<span></span>'}${b.i<65?`<a class="btn" href="#${B[b.i+1].id}">${B[b.i+1].n} →</a>`:''}</div>
 </div></details>`});
  list+='</section>'});
@@ -43,7 +45,7 @@ $('toc').innerHTML=toc;$('list').innerHTML=list;
 // 结构文本：把“｜”切成彩色段
 document.querySelectorAll('.stx').forEach(d=>{const parts=d.innerHTML.split('｜');if(parts.length>1)d.innerHTML='<div class="segs">'+parts.map((p,i)=>`<span style="--k:${i}">${p}</span>`).join('')+'</div>'});
 // ---------- 分布条 ----------
-$('gbar').innerHTML=groups.map(gr=>`<a href="#g-${gr.items[0].id}" title="${gr.key}" data-n="${gr.items.length}" style="flex:${gr.items.length};background:${C[gr.g]}">${gr.items.length>3?gr.g+' '+gr.items.length:gr.items.length}</a>`).join('');
+$('gbar').innerHTML=groups.map(gr=>`<a href="#g-${gr.items[0].id}" title="${gr.key}" data-n="${gr.items.length}" style="flex:${gr.items.length};background:${C[gr.g]}">${(gr.items.length===1?gr.items[0].n:gr.g)+' '+gr.items.length}</a>`).join('');
 // ---------- 筛选 ----------
 const chips=$('chips');chips.innerHTML='<button class="btn on" data-g="">全部 66</button>'+G.map(g=>`<button class="btn" data-g="${g}">${IC[g]} ${g}</button>`).join('')+'<button class="btn" id="openAll">展开全部</button><button class="btn" id="flashBtn">🃏 闪卡</button>';
 let cur='';const apply=()=>{const q=$('q').value.trim();

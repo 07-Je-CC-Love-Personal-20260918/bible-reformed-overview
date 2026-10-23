@@ -9,23 +9,25 @@ const J=[
  {n:'③ 第三次旅程',t:'约 53–57 · 徒 18:23–21:17',c:'#5f8a2e',r:['安提阿','特庇','彼西底的安提阿','以弗所','特罗亚','腓立比','帖撒罗尼迦','哥林多','腓立比','特罗亚','亚朔','米利都','罗底','帕大喇','推罗','多利买','该撒利亚','耶路撒冷'],note:'在以弗所住了三年（19:10“亚细亚的人都听见了主的道”）；写下林前、林后、加、罗；在米利都与以弗所长老告别（20）'},
  {n:'④ 解往罗马',t:'约 59–60 · 徒 27–28',c:'#6b3fb5',r:['该撒利亚','西顿','每拉','佳澳','米利大','叙拉古','利基翁','部丢利','罗马'],note:'上诉于该撒；途中遭遇风暴，在米利大岛（马耳他）船破；在罗马租屋住了两年，“放胆传讲神国的道”（28:31）'}];
 const mapEl=document.getElementById('actsMap');
-if(window.L&&mapEl){const map=L.map(mapEl,{scrollWheelZoom:false}).setView([37.5,26],5);
- L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:10,attribution:'© OpenStreetMap'}).addTo(map);
- const used=new Set();J.forEach(j=>j.r.forEach(x=>used.add(x)));used.add('大马士革');
+const concept=window.CCConcept&&CCConcept(document.getElementById('actsConcept'),{id:'acts',bounds:[30.5,43.5,11,37.5],w:1000,speed:4,
+ points:Object.entries(P).filter(([n])=>['安提阿','耶路撒冷','以弗所','哥林多','罗马','腓立比','帖撒罗尼迦','雅典','特罗亚','该撒利亚','米利大','路司得','彼西底的安提阿','帕弗','大马士革','米利都','部丢利','佳澳'].includes(n)).map(([n,[a,l]])=>({n,lat:a,lng:l,c:'#334155',big:['耶路撒冷','安提阿','以弗所','哥林多','罗马'].includes(n),left:['耶路撒冷','该撒利亚','米利都','雅典','哥林多','佳澳'].includes(n)})),
+ routes:J.map(j=>({c:j.c,pts:j.r.map(n=>P[n])}))});
+const map=window.CCMap&&CCMap(mapEl,{center:[37.5,26],zoom:5});
+const lines=[];let timers=[];const info=document.getElementById('actsInfo');
+if(map){const used=new Set();J.forEach(j=>j.r.forEach(x=>used.add(x)));used.add('大马士革');
  used.forEach(n=>L.circleMarker(P[n],{radius:4,color:'#fff',weight:1,fillColor:'#334155',fillOpacity:.85}).bindTooltip(n).addTo(map));
- const lines=J.map(j=>L.polyline([],{color:j.c,weight:3.5,opacity:.9}).addTo(map));
- let timers=[];const info=document.getElementById('actsInfo');
- function draw(k,anim){timers.forEach(clearInterval);timers=[];
-  J.forEach((j,i)=>{const show=k===-1||k===i;const pts=j.r.map(n=>P[n]);
-   if(!show){lines[i].setLatLngs([]);return}
-   if(!anim){lines[i].setLatLngs(pts);return}
-   let s=1;lines[i].setLatLngs([pts[0]]);const tm=setInterval(()=>{s++;lines[i].setLatLngs(pts.slice(0,s));if(s>=pts.length)clearInterval(tm)},420);timers.push(tm)});
-  if(k>=0){map.fitBounds(L.latLngBounds(J[k].r.map(n=>P[n])).pad(.15));info.innerHTML=`<b style="color:${J[k].c}">${J[k].n}</b> · <span class="d">${J[k].t}</span><br>${J[k].r.filter((x,i,a)=>a.indexOf(x)===i).join(' → ')}<br>${J[k].note}`}
-  else{map.setView([37.5,26],5);info.innerHTML='四条路线一起看：福音从<span class="m">耶路撒冷 → 安提阿 → 小亚细亚 → 欧洲 → 罗马</span>，正是徒 1:8 的展开。'}}
- const bt=document.getElementById('actsBtns');
- bt.innerHTML='<button class="btn on" data-k="-1">全部</button>'+J.map((j,i)=>`<button class="btn" data-k="${i}" style="border-color:${j.c}">${j.n}</button>`).join('')+'<button class="btn" id="actsPlay">▶ 依次播放</button>';
+ J.forEach(j=>lines.push(L.polyline([],{color:j.c,weight:3.5,opacity:.9}).addTo(map)))}
+function draw(k,anim){timers.forEach(clearInterval);timers=[];if(concept)concept.show(k,anim);
+ if(map)J.forEach((j,i)=>{const show=k===-1||k===i;const pts=j.r.map(n=>P[n]);
+  if(!show){lines[i].setLatLngs([]);return}
+  if(!anim){lines[i].setLatLngs(pts);return}
+  let s=1;lines[i].setLatLngs([pts[0]]);const tm=setInterval(()=>{s++;lines[i].setLatLngs(pts.slice(0,s));if(s>=pts.length)clearInterval(tm)},300);timers.push(tm)});
+ if(k>=0){if(map)map.fitBounds(L.latLngBounds(J[k].r.map(n=>P[n])).pad(.15));info.innerHTML=`<b style="color:${J[k].c}">${J[k].n}</b> · <span class="d">${J[k].t}</span><br>${J[k].r.filter((x,i,a)=>a.indexOf(x)===i).join(' → ')}<br>${J[k].note}`}
+ else{if(map)map.setView([37.5,26],5);info.innerHTML='四条路线一起看：福音从<span class="m">耶路撒冷 → 安提阿 → 小亚细亚 → 欧洲 → 罗马</span>，正是徒 1:8 的展开。'}}
+const bt=document.getElementById('actsBtns');
+if(bt){bt.innerHTML='<button class="btn on" data-k="-1">全部</button>'+J.map((j,i)=>`<button class="btn" data-k="${i}" style="border-color:${j.c}">${j.n}</button>`).join('')+'<button class="btn" id="actsPlay">▶ 依次播放</button>';
  bt.addEventListener('click',e=>{const b=e.target.closest('.btn');if(!b)return;bt.querySelectorAll('.btn').forEach(x=>x.classList.toggle('on',x===b));
-  if(b.id==='actsPlay'){let k=0;draw(0,true);const t=setInterval(()=>{k++;if(k>3){clearInterval(t);return}draw(k,true)},J[0].r.length*420+1200);timers.push(t)}else draw(+b.dataset.k,+b.dataset.k>=0)});
+  if(b.id==='actsPlay'){let k=0;draw(0,true);const t=setInterval(()=>{k++;if(k>3){clearInterval(t);return}draw(k,true)},4800);timers.push(t)}else draw(+b.dataset.k,+b.dataset.k>=0)});
  draw(-1,false)}
 // ---------- 多轨时间线 ----------
 const tl=document.getElementById('ntTimeline');if(!tl)return;

@@ -66,6 +66,20 @@
   document.querySelectorAll('[data-recite]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById(b.dataset.recite);t.classList.toggle('hide-ans');b.classList.toggle('on')}));
   document.addEventListener('click',e=>{const f=e.target.closest('.flash');if(f)f.classList.toggle('on')});
 
+
+  // ---- 右下角悬浮导航：主页 / 后退 / 前进 / 顶部 / 底部 ----
+  document.querySelectorAll('.fab').forEach(f=>f.remove());
+  const nav=document.createElement('nav');nav.className='fnav';nav.setAttribute('aria-label','快捷导航');
+  nav.innerHTML='<button data-a="home" title="主页（66 卷）">🏠</button><button data-a="back" title="后退">‹</button><button data-a="fwd" title="前进">›</button><button data-a="top" title="回到顶部">⤒</button><button data-a="bottom" title="到底部">⤓</button><button data-a="fold" class="fold" title="收起/展开">⋯</button>';
+  document.body.appendChild(nav);
+  nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const a=b.dataset.a;
+    if(a==='home')location.href='index.html';else if(a==='back')history.back();else if(a==='fwd')history.forward();
+    else if(a==='top')(window.CC&&CC.lenis)?CC.lenis.scrollTo(0):scrollTo({top:0,behavior:'smooth'});
+    else if(a==='bottom'){const y=document.documentElement.scrollHeight;(window.CC&&CC.lenis)?CC.lenis.scrollTo(y):scrollTo({top:y,behavior:'smooth'})}
+    else if(a==='fold')nav.classList.toggle('min')});
+  if(matchMedia('(max-width:600px)').matches)nav.classList.add('min');
+  let lastY=0;addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('dim',y>lastY&&y>300);lastY=y},{passive:true});
+
   // ---- 回到顶部 ----
   const up=document.getElementById('upBtn');if(up)up.addEventListener('click',()=>lenis?lenis.scrollTo(0):scrollTo({top:0,behavior:'smooth'}));
   // details 展开后刷新 Lenis 高度
