@@ -13,8 +13,10 @@
 
 
   // ---- 全站页面导航（统一注入）----
-  const PAGES=[['index.html','① 📖 全景'],['compare.html','② 🧩 分组对比'],['books.html','③ 📚 66 卷'],['gospels.html','④ ✝️ 四福音'],['kings.html','⑤ 👑 列王与历代'],['stats.html','⑥ 📊 统计'],['creeds.html','⑦ 📜 信经'],['classic.html','🏛️ 经典版']];
+  const PAGES=[['index.html','① 📚 66 卷'],['overview.html','② 📖 全景总览'],['gospels.html','③ ✝️ 四福音·生平'],['acts.html','④ 🔥 使徒行传·新约史'],['compare.html','⑤ 🧩 分组对比'],['kings.html','⑥ 👑 列王与历代'],['creeds.html','⑦ 📜 信经信条'],['stats.html','⑧ 📊 统计'],['classic.html','🏛️ 经典版']];
   const here=(location.pathname.split('/').pop()||'index.html');
+  // 预渲染其他页面：点导航时几乎瞬开
+  try{if(HTMLScriptElement.supports&&HTMLScriptElement.supports('speculationrules')){const sr=document.createElement('script');sr.type='speculationrules';sr.textContent=JSON.stringify({prerender:[{source:'document',where:{href_matches:'/*.html'},eagerness:'moderate'}]});document.head.appendChild(sr)}}catch(e){}
   const top=document.querySelector('header.top');
   if(top&&!document.querySelector('.pagenav')){const pn=document.createElement('nav');pn.className='pagenav';pn.setAttribute('aria-label','页面');
     pn.innerHTML=PAGES.map(([h,t])=>`<a href="${h}"${h===here?' class="on" aria-current="page"':''}>${t}</a>`).join('');top.after(pn);
